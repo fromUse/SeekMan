@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="topder">
+    <attr name="mtitle" format="string" />
+    <attr name="mtitleTextColor" format="color" />
+    <attr name="mtitleTextSize" format="dimension" />
+    <attr name="mleftTextColor" format="color" />
+    <attr name="mleftBackground" format="color|reference" />
+    <attr name="mleftText" format="string" />
+    <attr name="mrightTextColor" format="color" />
+    <attr name="mrightText" format="string" />
+    <attr name="mrightBackground" format="color|reference" />
+</declare-styleable>
+
+
+</resources>
