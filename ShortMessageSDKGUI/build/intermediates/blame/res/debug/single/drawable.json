@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_corners_bg_nor.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_corners_bg_nor.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_dialog_btn_back.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_dialog_btn_back.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_country_group_scroll_down.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_country_group_scroll_down.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_corners_bg_pre.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_corners_bg_pre.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_country_group_scroll_up.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_country_group_scroll_up.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_btn_disenable.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_btn_disenable.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_btn_enable.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_btn_enable.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_country_bg_selector.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_country_bg_selector.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_edittext_bg_selector.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_edittext_bg_selector.xml"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/debug/drawable/smssdk_corners_bg.xml",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/res/drawable/smssdk_corners_bg.xml"
+    }
+]

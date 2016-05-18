@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SenkMan.iml" filepath="$PROJECT_DIR$/SenkMan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMSSDK/SMSSDK.iml" filepath="$PROJECT_DIR$/SMSSDK/SMSSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeekMan.iml" filepath="$PROJECT_DIR$/SeekMan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShortMessageSDKGUI/ShortMessageSDKGUI.iml" filepath="$PROJECT_DIR$/ShortMessageSDKGUI/ShortMessageSDKGUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

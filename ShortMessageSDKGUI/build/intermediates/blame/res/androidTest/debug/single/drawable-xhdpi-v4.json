@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_back_arrow2.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_back_arrow2.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_dialog_back.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_dialog_back.9.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_sharesdk_icon.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_sharesdk_icon.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_back_arrow.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_back_arrow.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_dialog_bg.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_dialog_bg.9.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_input_bg_focus.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_input_bg_focus.9.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_search_icon.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_search_icon.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_input_bg_special_normal.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_input_bg_special_normal.9.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_cp_default_avatar.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_cp_default_avatar.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_default_avatar.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_default_avatar.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_input_bg_normal.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_input_bg_normal.9.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_clear_search.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_clear_search.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_cl_divider.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_cl_divider.png"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/smssdk_input_bg_special_focus.9.png",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/smssdk_input_bg_special_focus.9.png"
+    }
+]

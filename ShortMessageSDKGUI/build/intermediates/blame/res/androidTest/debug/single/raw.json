@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/raw/smssdk_pydb",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/bundles/debug/res/raw/smssdk_pydb"
+    },
+    {
+        "merged": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/res/merged/androidTest/debug/raw/libs",
+        "source": "/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build/intermediates/exploded-aar/SeekMan/SMSSDK/unspecified/res/raw/libs"
+    }
+]
