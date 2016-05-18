@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/assets"/></dataSet><dataSet config="debug"><source path="/media/chen-gui/Office/Linux/SeekMan/ShortMessageSDKGUI/build-types/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/chen-gui/AndroidStudioProjects/SeekMan/ShortMessageSDKGUI/assets"/></dataSet><dataSet config="debug"><source path="/home/chen-gui/AndroidStudioProjects/SeekMan/ShortMessageSDKGUI/build-types/debug/assets"/></dataSet></merger>
