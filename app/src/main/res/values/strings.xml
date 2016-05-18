@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SenkMan</string>
+    <string name="title_activity_password">PasswordActivity</string>
 </resources>
