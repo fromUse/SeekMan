@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="bottom">
+        <attr name="dcentTextColor" format="color" />
+        <attr name="dcentBackground" format="color|reference" />
+        <attr name="dcentText" format="string" />
+        <attr name="dleftTextColor" format="color" />
+        <attr name="dleftBackground" format="color|reference" />
+        <attr name="dleftText" format="string" />
+        <attr name="drightTextColor" format="color" />
+        <attr name="drightText" format="string" />
+        <attr name="drightBackground" format="color|reference" />
+    </declare-styleable>
+
+
+</resources>
