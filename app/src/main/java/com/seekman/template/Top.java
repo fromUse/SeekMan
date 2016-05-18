@@ -73,7 +73,7 @@ public class Top extends RelativeLayout {
         rightButton.setBackground(mrightBackgound);
         rightButton.setText(mrightText);
 
-        setBackgroundColor(android.graphics.Color.parseColor("#191970"));
+        setBackgroundColor(android.graphics.Color.parseColor("#0080FF"));
 
         tvTitle.setTextColor(mtitleTextColor);
         tvTitle.setTextSize(mtitleTextSize);
