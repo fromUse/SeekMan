@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="register_normal">#2f47cc</color>
-    <color name="register_on">#0f259e</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="topColor">#0080FF</color>
+
+    //底部按钮图片
+    <drawable name="msquare">@mipmap/chhome</drawable>//广场选中图片
+    <drawable name="msquare1">@mipmap/minhome</drawable>//广场未选中图片
+    <drawable name="mtheme">@mipmap/chactivity</drawable>//主题选中图片
+    <drawable name="mtheme1">@mipmap/minactivity</drawable>//主题未选中图片
+    <drawable name="mpersonal">@mipmap/chuser</drawable>//个人选中图片
+    <drawable name="mpersonal1">@mipmap/minuser</drawable>//个人未选中图片
 </resources>

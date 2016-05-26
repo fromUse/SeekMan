@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    //底部广场图片切换
+    <item android:state_checked="true" android:drawable="@drawable/msquare" />
+    <item android:state_checked="false" android:drawable="@drawable/msquare1" />
+
+
+</selector>

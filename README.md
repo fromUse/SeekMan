@@ -4,12 +4,12 @@
 	- Activity统一继承AppCompatActivity
 # adapter
             放自定义适配，例如ListView，ViewPager..
-# bean
+# com.seekman.library.bean
             数据模型，面向对象思想封装某一数据的容器，方便引用的传递
 	- 用户对象、帖子....
 # comm
             放一些模板文件，自定义View,获取一些重复用到的组件，url等
-# fragment
+# com.seekman.personal.fragment
             顾名思义，放Fragment,
 	- 用support v4包的Fragment
 # utils

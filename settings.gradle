@@ -1,1 +1,1 @@
-include ':app', ':ShortMessageSDKGUI', ':SMSSDK'
+include ':app', ':library', ':Theme', ':Personal', ':Square'
