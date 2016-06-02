@@ -82,7 +82,8 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             if (con != null) {
 
                 con.setRequestMethod ("GET");
-                con.setConnectTimeout (5000);
+                con.setConnectTimeout (10000);
+                con.setReadTimeout (5000);
                 if (con.getResponseCode () == 200) {
 
                     input = new BufferedReader (new InputStreamReader (con.getInputStream (), "utf-8"));
@@ -118,11 +119,11 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             URL httpURL = new URL (url);
             sb = new StringBuffer ();
             HttpURLConnection con = (HttpURLConnection) httpURL.openConnection ();
-            Thread.sleep (1500);
             if (con != null) {
 
                 con.setRequestMethod ("POST");
                 con.setConnectTimeout (5000);
+                con.setReadTimeout (3000);
                 con.setDoOutput (true);
                 con.setDoInput (true);
 
@@ -147,9 +148,7 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             e.printStackTrace ();
         } catch (IOException e) {
             e.printStackTrace ();
-        } catch (InterruptedException e) {
-            e.printStackTrace ();
-        } finally {
+        }  finally {
             if (out != null) {
 
                 out.close ();

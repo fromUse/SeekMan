@@ -21,12 +21,11 @@ public class Fragment_personal extends Fragment {
 
     private View root = null;
     private Button mBtnTest = null;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         root = inflater.inflate(R.layout.personal_main,null);
-
         init();
         data();
         setting();

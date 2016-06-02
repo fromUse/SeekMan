@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+    <TextView
+        android:background="#0080FF"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:text="广场"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
 
     <Button
         android:id="@+id/bt_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="广场_点击测试"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="广场_点击测试"/>
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>

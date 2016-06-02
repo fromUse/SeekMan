@@ -4,15 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
-        android:background="@color/topColor"
-        android:id="@+id/title"
-        android:gravity="center"
-        android:text="广场"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
-
     <FrameLayout
         android:id="@+id/mframe"
         android:layout_width="match_parent"
@@ -21,6 +12,7 @@
     </FrameLayout>
     
     <RadioGroup
+        android:background="@drawable/list_tem_border_top"
         android:id="@+id/mRadioGroup"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -68,6 +60,4 @@
             android:text="个人"
             />
     </RadioGroup>
-
-
 </LinearLayout>

@@ -3,6 +3,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <TextView
+        android:background="@color/topColor"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:text="个人中心"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
     <Button
         android:id="@+id/bt_test"
         android:layout_width="match_parent"

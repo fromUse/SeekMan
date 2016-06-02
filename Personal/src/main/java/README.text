@@ -1,7 +1,7 @@
 # 包名目录说明
 本模块是 ：Personal
 - app: [ 本应用的整体调用者 调用其他模块 ]
-    # activity
+    # com.seekman.activity
             专门放Activity
                 Activity统一继承AppCompatActivity
     # adapter

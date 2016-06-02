@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/pasan"/>
+
+
+            <TextView
+                android:textStyle="bold"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_tem_border_top"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="生命在于运动 标题"/>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_tem_border_top">
+
+                <TextView
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_mylocation"
+                    android:drawablePadding="20dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="浏览次数:"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="20dp"
+                    android:gravity="center_vertical"
+                    android:text="300"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_tem_border_top"
+                android:drawableLeft="@android:drawable/ic_menu_recent_history"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="2016/5/30 14:00-16:00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_tem_border_top"
+                android:drawableLeft="@android:drawable/ic_dialog_map"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="汕尾铜鼎山"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/list_tem_border_top"
+                android:drawableLeft="@android:drawable/ic_menu_call"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:hint="联系发布者"
+                android:paddingLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_tem_border_top"
+                android:text="走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/list_tem_border_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:onClick="collectionActivity"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/theme_item_style"
+                android:drawableTop="@android:drawable/btn_star_big_off"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="收藏"/>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_tem_border_right"/>
+
+            <TextView
+                android:onClick="joinActivity"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/theme_item_style"
+                android:drawableTop="@android:drawable/ic_media_next"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="走起"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

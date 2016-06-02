@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/theme_item_style"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/theme_item_style"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activity_userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/username"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="用户名"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/activity_City"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:text="汕尾"
+                android:textSize="10sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/activity_Img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="3dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/run_details">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/listview_item_textview_style"
+                    android:paddingLeft="10dp"
+                    android:text="铜鼎山"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/activity_Content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:lineSpacingExtra="5sp"
+                    android:paddingTop="20dp"
+                    android:lines="5"
+                    android:text="@string/textContent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_tem_border_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="浏览次数:"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/activity_Read_Count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="300"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/activity_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:text="2016-5-30"
+                android:textSize="10sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

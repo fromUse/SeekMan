@@ -8,6 +8,8 @@ import android.util.Log;
 import android.util.LruCache;
 import android.widget.ImageView;
 
+import com.seekman.library.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -43,6 +45,9 @@ public class ImageLoad extends AsyncTask<String, Void, Bitmap> {
      */
     public ImageLoad(ImageView img) {
         this.img = img;
+        //初始化图片
+        Bitmap bitmap = BitmapFactory.decodeResource (img.getResources (), R.mipmap.ic_launcher);
+        img.setImageBitmap (bitmap);
     }
 
     /**

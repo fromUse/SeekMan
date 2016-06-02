@@ -11,6 +11,13 @@ public class PublicUtil {
     /**请求实际api时，在HOST + 项目名/Action名称/参数**/
     /**例如    HOST/SeekMan/MobileLogin/?user=haha&password=123456   **/
 
-    public static final String HOST = "172.30.85.44:8080/";
+    public static final String HOST = "http://172.30.84.10:8082";
+
+    public static final String THEME_CATEGORY = HOST + "/AndroidServer/themegson";
+
+
+    public static final String THEME_ITEM = HOST + "/AndroidServer/sendactivitygson?theme_name=";
+
+
 
 }
