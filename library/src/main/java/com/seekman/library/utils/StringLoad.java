@@ -12,15 +12,15 @@ import java.net.URL;
 
 /**
  * Created by chen-gui on 16-4-29.
- * <p/>
+ * <p>
  * 此类负责异步加载json
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * 当请求方式时GET 调用execute()不用家参数
- *
- * <p/>
- *
+ * <p>
+ * <p>
+ * <p>
  * 当请求方式时POST 调用execute()参数是post参数
  */
 public abstract class StringLoad extends AsyncTask<String, Void, String> {
@@ -39,7 +39,6 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
     private int method = 1;
 
     /**
-     *
      * @param method 请求url
      */
     public StringLoad(int method) {
@@ -119,6 +118,7 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             URL httpURL = new URL (url);
             sb = new StringBuffer ();
             HttpURLConnection con = (HttpURLConnection) httpURL.openConnection ();
+
             if (con != null) {
 
                 con.setRequestMethod ("POST");
@@ -148,7 +148,8 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             e.printStackTrace ();
         } catch (IOException e) {
             e.printStackTrace ();
-        }  finally {
+        } finally {
+
             if (out != null) {
 
                 out.close ();
@@ -170,7 +171,7 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
      * 耗时操作之后，更新UI的所有逻辑写在这个方法中
      *
      * @param result 参数是json数据字符串形式，
-     *               <p/>
+     *               <p>
      *               json数据需要解析成项目实际需求的形式
      */
     abstract public void executeUI(String result);

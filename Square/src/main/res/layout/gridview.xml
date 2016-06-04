@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="180sp"
+        android:layout_height="180sp"
+        android:id="@+id/gidviewimage"
+        android:src="@mipmap/ic_launcher"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4sp"
+            android:layout_marginLeft="4sp"
+            android:id="@+id/theme_name"
+            android:background="@drawable/texttheme"
+            android:textSize="8sp"
+            android:padding="5sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cityname"
+            android:layout_marginRight="4sp"
+            android:padding="5sp"
+            android:textSize="8sp"
+            android:background="@drawable/textcity"
+            android:layout_alignTop="@+id/theme_name"
+            android:layout_alignEnd="@+id/gidviewimage" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:background="@drawable/texttitle"
+        android:textColor="#000000"
+        android:padding="6dp"
+        android:id="@+id/texttitle"
+        android:layout_alignBottom="@+id/gidviewimage"
+        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/address"
+            android:textSize="8sp"
+            android:textColor="#000000"
+            android:padding="4dp"
+            android:background="@drawable/textaddress"
+            android:layout_above="@+id/texttitle"
+            android:layout_alignEnd="@+id/cityname" />
+    </RelativeLayout>
+</LinearLayout>
