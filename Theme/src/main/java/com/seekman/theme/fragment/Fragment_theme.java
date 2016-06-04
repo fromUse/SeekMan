@@ -43,7 +43,7 @@ public class Fragment_theme extends Fragment {
     private ThemeCategoryAdapter adapter = null;
     private ProgressBar progressBar = null;
 
-    private Handler handler = new Handler (){
+    private Handler handler = new Handler () {
 
         @Override
         public void handleMessage(Message msg) {
@@ -71,65 +71,57 @@ public class Fragment_theme extends Fragment {
         mData = new ArrayList<Theme> ();
 
 
-        handler.postDelayed (new Runnable () {
+        /**异步请求服务器，获取json数据**/
+        new StringLoad (StringLoad.METHOD_GET) {
+            /**
+             *
+             * 当json数据成功返回时回调方法
+             *  <p>此方法是UI线程回调</p>
+             * **/
             @Override
-            public void run() {
+            public void executeUI(String result) {
+                /**解析json数据到List中**/
+                initThemeData (result);
+                progressBar.setVisibility (View.GONE);
 
 
-                /**异步请求服务器，获取json数据**/
-                new StringLoad (StringLoad.METHOD_GET) {
-                    /**
-                     *
-                     * 当json数据成功返回时回调方法
-                     *  <p>此方法是UI线程回调</p>
-                     * **/
+                /**
+                 *
+                 * 数据解析完成后才可以，设置适配器
+                 *
+                 * 数据解析完成后才可以 UI相关的操作
+                 *
+                 * **/
+                adapter = new ThemeCategoryAdapter (mData, getContext ());
+                recyclerView.setAdapter (adapter);
+                adapter.setOnItemLister (new ThemeCategoryAdapter.ItemClickLister () {
                     @Override
-                    public void executeUI(String result) {
-                        /**解析json数据到List中**/
-                        initThemeData (result);
-                        progressBar.setVisibility (View.GONE);
+                    public void onItemClickLister(View view, int position) {
+
+                        Intent it = new Intent (getContext (), ActivityDetailsContainer.class);
 
 
-                        /**
-                         *
-                         * 数据解析完成后才可以，设置适配器
-                         *
-                         * 数据解析完成后才可以 UI相关的操作
-                         *
-                         * **/
-                        adapter = new ThemeCategoryAdapter (mData, getContext ());
-                        recyclerView.setAdapter (adapter);
-                        adapter.setOnItemLister (new ThemeCategoryAdapter.ItemClickLister () {
-                            @Override
-                            public void onItemClickLister(View view, int position) {
-
-                                Intent it = new Intent (getContext (), ActivityDetailsContainer.class);
-
-
-                                it.putExtra ("ThemeName", mData.get (position).getTheme_name ());
-                                it.putExtra ("THEME_ICON_URL",mData.get (position).getTheme_img ());
-                                startActivity (it);
-                            }
-
-                            @Override
-                            public void onLongItemClickLister(View view, int position) {
-
-                            }
-                        });
-
-                        adapter.notifyDataSetChanged ();
+                        it.putExtra ("ThemeName", mData.get (position).getTheme_name ());
+                        it.putExtra ("THEME_ICON_URL", mData.get (position).getTheme_img ());
+                        startActivity (it);
                     }
-                }.execute (PublicUtil.THEME_CATEGORY);
+
+                    @Override
+                    public void onLongItemClickLister(View view, int position) {
+
+                    }
+                });
+
+                adapter.notifyDataSetChanged ();
             }
-        },800);
+        }.execute (PublicUtil.THEME_CATEGORY);
 
 
-
-
-    }
+}
 
     /**
      * 解析数据到mData上
+     *
      * @param result
      */
     private void initThemeData(String result) {
@@ -157,10 +149,10 @@ public class Fragment_theme extends Fragment {
                     }
 
                 }
-            }else {
+            } else {
 
                 /**隐藏圈**/
-              Toast.makeText (getContext (),R.string.net_error,Toast.LENGTH_SHORT).show ();
+                Toast.makeText (getContext (), R.string.net_error, Toast.LENGTH_SHORT).show ();
 
              /*   Intent it = new Intent (getContext (), ActivityTest.class);
                 startActivity (it);*/

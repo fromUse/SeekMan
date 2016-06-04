@@ -10,6 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/topColor"
         android:gravity="center"
+        android:textColor="#ffffff"
         android:text="主题"
         android:textStyle="bold"/>
 

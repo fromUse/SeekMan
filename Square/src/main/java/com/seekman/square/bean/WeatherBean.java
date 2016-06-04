@@ -1,13 +1,12 @@
 package com.seekman.square.bean;
 
-import com.seekman.square.bean.Results;
-
 import java.util.ArrayList;
 public class WeatherBean {
     private String data;
     private int error;
     private ArrayList<Results> results;
-    private boolean status;
+    private String status;
+
 
     public String getData() {
         return data;
@@ -33,12 +32,11 @@ public class WeatherBean {
         this.results = results;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
-
 }

@@ -15,9 +15,11 @@
             android:background="#0080FF"
             android:gravity="center"
             android:text="广场"
+            android:textColor="#ffffff"
             android:textStyle="bold"/>
 
         <TextView
+            android:textColor="#ffffff"
             android:id="@+id/topcity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,10 +27,11 @@
             android:drawablePadding="10sp"
             android:padding="18sp"
             android:text="选择城市"
-            android:textSize="10sp"
+            android:textSize="11sp"
             />
 
         <TextView
+            android:textColor="#ffffff"
             android:id="@+id/topweather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,6 +42,7 @@
             />
     </RelativeLayout>
 
+    <!--
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
@@ -55,15 +59,25 @@
         android:paddingRight="5dp"
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp"/>
+     -->
 
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/square_recyclerview"
+    <!-- 下拉刷新容器  -->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/pullRefresh"
         android:layout_below="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingTop="10dp"
+            android:id="@+id/square_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 
 </RelativeLayout>

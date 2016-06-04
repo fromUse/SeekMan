@@ -1,271 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pullRefreshWeather"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/weather"
-    android:orientation="vertical" >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:id="@+id/cityTitle"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:text="city"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/topback"
-            android:drawableLeft="@mipmap/ic_back"
-            android:drawablePadding="10sp"
-            android:padding="16sp"
-            />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="80sp"
-        >
-    <ImageView
-        android:id="@+id/iv_status_image"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_centerHorizontal="true"
-        />
-    <TextView
-        android:padding="2sp"
-        android:id="@+id/tv_currentday_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/iv_status_image"
-        android:text="status"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/tv_currentday_temp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="2sp"
-        android:text="currtem"
-        android:layout_below="@+id/tv_currentday_status"
-        android:textColor="@color/white"
-        android:textSize="12sp" />
-    <TextView
-        android:id="@+id/tv_currentday_wind"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="2sp"
-        android:text="wind"
-        android:layout_below="@+id/tv_currentday_temp"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/tv_currentday_data"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:gravity="center_horizontal"
-        android:padding="2sp"
-        android:text="week"
-        android:layout_below="@+id/tv_currentday_wind"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
-    </RelativeLayout>
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_marginTop="30sp"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical" >
-        <TextView
-            android:paddingLeft="5dp"
-            android:id="@+id/tv_flue"
+        android:background="@mipmap/weather">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-        <TextView
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:id="@+id/tv_fluedetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_weight="0.5"
-            android:textSize="10sp"
-            android:textStyle="italic" />
-        <TextView
-            android:paddingLeft="5dp"
-            android:id="@+id/tv_support"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-        <TextView
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:id="@+id/tv_supportdetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:orientation="horizontal" >
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" >
-            <ImageView
-                android:id="@+id/iv_firststatus_image"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_gravity="center_horizontal" />
-            <TextView
-                android:id="@+id/first_status"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/cityTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="city"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/topback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_back"
+                    android:drawablePadding="10dp"
+                    android:padding="16sp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="80sp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_status_image"
+                    android:layout_width="60sp"
+                    android:layout_height="60sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_currentday_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_status_image"
+                    android:gravity="center_horizontal"
+                    android:padding="2sp"
+                    android:text="status"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_currentday_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_currentday_status"
+                    android:gravity="center_horizontal"
+                    android:padding="2sp"
+                    android:text="currtem"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tv_currentday_wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_currentday_temp"
+                    android:gravity="center_horizontal"
+                    android:padding="2sp"
+                    android:text="wind"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_currentday_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/tv_currentday_wind"
+                    android:gravity="center_horizontal"
+                    android:padding="2sp"
+                    android:text="week"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_firststatus_image"
-                android:gravity="center_horizontal"
-                android:paddingLeft="4dp"
-                android:paddingTop="5dp"
-                android:text="status"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp" >
-            <TextView
-                android:id="@+id/first_data"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30sp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_flue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:id="@+id/tv_fluedetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="italic"/>
+
+                <TextView
+                    android:id="@+id/tv_support"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"/>
+
+                <TextView
+                    android:id="@+id/tv_supportdetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingLeft="3dp"
-                android:text="周三"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-            <TextView
-                android:id="@+id/first_tem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/first_data"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="-2-10"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" >
-            <ImageView
-                android:id="@+id/iv_secondstatus_image"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_gravity="center_horizontal" />
-            <TextView
-                android:id="@+id/second_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_secondstatus_image"
-                android:gravity="center_horizontal"
-                android:paddingLeft="4dp"
-                android:paddingTop="5dp"
-                android:text="晴"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp" >
-            <TextView
-                android:id="@+id/second_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingLeft="3dp"
-                android:text="周三"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-            <TextView
-                android:id="@+id/second_tem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/second_data"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="-2-10"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" >
-            <ImageView
-                android:id="@+id/iv_thirdnstatus_image"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_gravity="center_horizontal" />
-            <TextView
-                android:id="@+id/third_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_thirdnstatus_image"
-                android:gravity="center_horizontal"
-                android:paddingLeft="4dp"
-                android:paddingTop="5dp"
-                android:text="晴"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp" >
-            <TextView
-                android:id="@+id/third_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingLeft="3dp"
-                android:text="周三"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-            <TextView
-                android:id="@+id/third_tem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/third_data"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="-2-10"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="80dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_firststatus_image"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/first_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_firststatus_image"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="5dp"
+                        android:text="status"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/first_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="3dp"
+                        android:text="周三"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/first_tem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/first_data"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dp"
+                        android:text="-2-10"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_secondstatus_image"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/second_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_secondstatus_image"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="5dp"
+                        android:text="晴"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/second_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="3dp"
+                        android:text="周三"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/second_tem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/second_data"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dp"
+                        android:text="-2-10"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_thirdnstatus_image"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/third_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_thirdnstatus_image"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="5dp"
+                        android:text="晴"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/third_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="3dp"
+                        android:text="周三"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/third_tem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/third_data"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dp"
+                        android:text="-2-10"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>
