@@ -16,15 +16,15 @@ import com.seekman.square.fragment.Fragment_square;
 import com.seekman.theme.fragment.Fragment_theme;
 
 
-public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener{
+public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener {
     private RadioGroup group;
     private RadioButton main_square;
 
-    private Fragment mSquareFragment = null;
-    private Fragment mThemeFragment = null;
+
     private Fragment mPersonalFragment = null;
+
     //private RadioButton main_theme;
-   // private RadioButton main_personal;
+    // private RadioButton main_personal;
     private FragmentManager fragmentManager = null;
     private FragmentTransaction transaction = null;
 
@@ -44,61 +44,49 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
 
     @Override
     protected void listeners() {
-        group.setOnCheckedChangeListener(this);
+        group.setOnCheckedChangeListener (this);
     }
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void inits() {
-        group = (RadioGroup) findViewById(R.id.mRadioGroup);
-        main_square = (RadioButton) findViewById(R.id.main_square);
-        // main_theme = (RadioButton) findViewById(R.id.main_theme);
-        // main_personal = (RadioButton) findViewById(R.id.main_personal);
+        group = (RadioGroup) findViewById (R.id.mRadioGroup);
+        main_square = (RadioButton) findViewById (R.id.main_square);
         //默认打开广场
-        main_square.setChecked(true);
+        main_square.setChecked (true);
         //初始化FragmentManager
-        fragmentManager = getSupportFragmentManager();
-        changeFragment(new Fragment_square (),false);
+        fragmentManager = getSupportFragmentManager ();
+        changeFragment (new Fragment_square (), false);
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
+
             case R.id.main_square:
-                mSquareFragment = mSquareFragment!=null?mSquareFragment:new Fragment_square();
-
-                changeFragment(mSquareFragment,true);
-
-
-
+                changeFragment (new Fragment_square (), true);
                 break;
             case R.id.main_theme:
-                mThemeFragment = mThemeFragment!=null?mThemeFragment:new Fragment_theme ();
-
-                changeFragment(new Fragment_theme (),true);
-
+                changeFragment (new Fragment_theme (), true);
                 break;
             case R.id.main_personal:
-                mPersonalFragment = mPersonalFragment!=null?mPersonalFragment:new Fragment_personal ();
-                /*Bundle bundle = new Bundle ();
-                bundle.putSerializable ("text",mTitle);
-                mPersonalFragment.setArguments (bundle);*/
-                changeFragment(mPersonalFragment,true);
+                changeFragment (new Fragment_personal (), true);
                 break;
             default:
                 break;
         }
     }
+
     //切换不同的fragment
-    public void changeFragment(Fragment fragment, boolean isInit){
-         transaction = fragmentManager.beginTransaction();
+    public void changeFragment(Fragment fragment, boolean isInit) {
+        transaction = fragmentManager.beginTransaction ();
 
-        transaction.setCustomAnimations(R.anim.start_in_fragment,R.anim.end_out_fragment);
+        transaction.setCustomAnimations (R.anim.start_in_fragment, R.anim.end_out_fragment);
 
-        transaction.replace(R.id.mframe,fragment);
-        if (!isInit){
-            transaction.addToBackStack(null);
+        transaction.replace (R.id.mframe, fragment);
+        if (!isInit) {
+            transaction.addToBackStack (null);
         }
-        transaction.commit();
+        transaction.commit ();
     }
 }
