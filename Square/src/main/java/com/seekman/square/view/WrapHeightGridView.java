@@ -1,8 +1,6 @@
 package com.seekman.square.view;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.widget.GridView;
 

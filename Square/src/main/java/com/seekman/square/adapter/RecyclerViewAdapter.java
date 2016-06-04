@@ -37,9 +37,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     public interface ItemClickLister {
-        public void onItemClickLister(View view, int position);
+         void onItemClickLister(View view, int position);
 
-        public void onLongItemClickLister(View view, int position);
+         void onLongItemClickLister(View view, int position);
     }
 
     private ItemClickLister itemClickLister = null;

@@ -87,7 +87,7 @@ public class ImageLoad extends AsyncTask<String, Void, Bitmap> {
      */
     public void getBitmap(Bitmap bitmap){
 
-    } ;
+    }
 
     /**
      * 下载图片并将图片解析成bitmap

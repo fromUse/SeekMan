@@ -144,7 +144,15 @@ public class Fragment_square extends Fragment {
 
                     /**首次加载**/
                     case FIRST_LOAD:
-                        if (recyclerViewAdapter == null) {
+
+                        mData = new ArrayList<City_ActivityGsonData> ();
+                        /**给RecyclerView设置适配器**/
+                        recyclerViewAdapter = new RecyclerViewAdapter (mData, getContext ());
+                        /**当网络加载完成后在设置事件的监听**/
+                        square_recyclerview.setAdapter (recyclerViewAdapter);
+                        square_recyclerview.setLayoutManager (new GridLayoutManager (getContext (), 2, GridLayoutManager.VERTICAL, false));
+
+                        if (recyclerViewAdapter != null) {
                             firstLoad (result);
                             lister ();
                         }
@@ -231,30 +239,24 @@ public class Fragment_square extends Fragment {
      */
     private void firstLoad(String result) {
 
-        mData = new ArrayList<City_ActivityGsonData> ();
-
         Gson gson = new Gson ();
 
         SendCity_ActivityCson_3 send = gson.fromJson (result, SendCity_ActivityCson_3.class);
 
-        if (send != null) {
+        if (send != null)
+        {
             /**记得判断状态码**/
             /**当状态码为200表示list有数据**/
 
-            switch (send.getStatus ()) {
+            switch (send.getStatus ())
+            {
                 case "200":
                     List<City_ActivityGsonData> list = send.getList ();
                     for (int i = 0; i < list.size (); i++) {
                         City_ActivityGsonData activity = list.get (i);
                         mData.add (activity);
-                        //   adapter = new GridViewAdapter (mData, getContext ());
-                        //          gridView.setAdapter (adapter);
                     }
-                    /**给RecyclerView设置适配器**/
-                    recyclerViewAdapter = new RecyclerViewAdapter (mData, getContext ());
-                    /**当网络加载完成后在设置事件的监听**/
-                    square_recyclerview.setAdapter (recyclerViewAdapter);
-                    square_recyclerview.setLayoutManager (new GridLayoutManager (getContext (), 2, GridLayoutManager.VERTICAL, false));
+                    recyclerViewAdapter.notifyDataSetChanged ();
                     break;
 
                 /**当状态码为404表示list为null**/
@@ -373,19 +375,22 @@ public class Fragment_square extends Fragment {
             }
         });
 
+        if (recyclerViewAdapter != null) {
 
-        /**给控件设置自定义点击事件**/
-        recyclerViewAdapter.setOnItemLister (new RecyclerViewAdapter.ItemClickLister () {
-            @Override
-            public void onItemClickLister(View view, int position) {
-                Toast.makeText (getContext (), "Click  :" + position, Toast.LENGTH_LONG).show ();
-            }
+            /**给控件设置自定义点击事件**/
+            recyclerViewAdapter.setOnItemLister (new RecyclerViewAdapter.ItemClickLister () {
+                @Override
+                public void onItemClickLister(View view, int position) {
+                    Toast.makeText (getContext (), "Click  :" + position, Toast.LENGTH_LONG).show ();
+                }
 
-            @Override
-            public void onLongItemClickLister(View view, int position) {
-                Toast.makeText (getContext (), "longClick  :" + position, Toast.LENGTH_LONG).show ();
-            }
-        });
+                @Override
+                public void onLongItemClickLister(View view, int position) {
+                    Toast.makeText (getContext (), "longClick  :" + position, Toast.LENGTH_LONG).show ();
+                }
+            });
+
+        }
 
     }
 

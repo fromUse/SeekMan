@@ -31,8 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".square.activity.CityPickerActivity"></activity>
-        <activity android:name=".square.activity.WeatherActivity"></activity>
+        <activity android:name=".square.activity.CityPickerActivity"/>
+        <activity android:name=".square.activity.WeatherActivity"/>
     </application>
 
 </manifest>

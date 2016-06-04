@@ -31,9 +31,9 @@ public class ThemeDetailsAdapter extends RecyclerView.Adapter<ThemeDetailsAdapte
     }
 
     public interface ItemClickLister {
-        public void onItemClickLister(View view, int position);
+         void onItemClickLister(View view, int position);
 
-        public void onLongItemClickLister(View view, int position);
+         void onLongItemClickLister(View view, int position);
     }
 
     private ItemClickLister itemClickLister = null;

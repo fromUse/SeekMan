@@ -627,6 +627,6 @@ public abstract class BaseItemAnimator extends SimpleItemAnimator {
 
         @Override
         public void onAnimationCancel(View view) {}
-    };
+    }
 }
 

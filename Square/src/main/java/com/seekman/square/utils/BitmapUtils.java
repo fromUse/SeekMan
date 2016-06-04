@@ -20,7 +20,6 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
-import android.widget.ImageView;
 
 /**
  * Created by alice on 2016/6/1.
