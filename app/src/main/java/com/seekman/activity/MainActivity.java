@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
     private RadioGroup group;
     private RadioButton main_square;
     private TextView mTitle = null;
+    private TextView topcity;
+    private TextView topweather;
     //private RadioButton main_theme;
    // private RadioButton main_personal;
     private FragmentManager fragmentManager;
@@ -44,6 +47,8 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
     protected void inits() {
         group = (RadioGroup) findViewById(R.id.mRadioGroup);
         main_square = (RadioButton) findViewById(R.id.main_square);
+        topcity = (TextView) findViewById(R.id.topcity1);
+        topweather = (TextView) findViewById(R.id.topweather1);
         // main_theme = (RadioButton) findViewById(R.id.main_theme);
         // main_personal = (RadioButton) findViewById(R.id.main_personal);
         //默认打开广场
@@ -60,14 +65,24 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
             case R.id.main_square:
                 changeFragment(new Fragment_square(),true);
                 mTitle.setText (getString(R.string.square_title));
+                topcity.setVisibility(View.GONE);
+                topweather.setVisibility(View.GONE);
+               // mTitle.setVisibility(View.GONE);
+
                 break;
             case R.id.main_theme:
                 changeFragment(new Fragment_theme (),true);
                 mTitle.setText (getString(R.string.theme_title));
+                topcity.setVisibility(View.GONE);
+                topweather.setVisibility(View.GONE);
+                //mTitle.setVisibility(View.GONE);
                 break;
             case R.id.main_personal:
                 changeFragment(new Fragment_personal (),true);
                 mTitle.setText (getString(R.string.personal));
+                topcity.setVisibility(View.GONE);
+                topweather.setVisibility(View.GONE);
+                //mTitle.setVisibility(View.GONE);
                 break;
             default:
                 break;

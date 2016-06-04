@@ -118,7 +118,7 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
             URL httpURL = new URL (url);
             sb = new StringBuffer ();
             HttpURLConnection con = (HttpURLConnection) httpURL.openConnection ();
-            Thread.sleep (1500);
+
             if (con != null) {
 
                 con.setRequestMethod ("POST");
@@ -146,8 +146,6 @@ public abstract class StringLoad extends AsyncTask<String, Void, String> {
         } catch (MalformedURLException e) {
             e.printStackTrace ();
         } catch (IOException e) {
-            e.printStackTrace ();
-        } catch (InterruptedException e) {
             e.printStackTrace ();
         } finally {
             if (out != null) {

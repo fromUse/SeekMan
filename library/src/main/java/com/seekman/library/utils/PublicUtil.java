@@ -12,5 +12,4 @@ public class PublicUtil {
     /**例如    HOST/SeekMan/MobileLogin/?user=haha&password=123456   **/
 
     public static final String HOST = "172.30.85.44:8080/";
-
 }

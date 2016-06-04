@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
     <TextView
         android:background="@color/topColor"
         android:id="@+id/title"
@@ -12,6 +17,26 @@
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/topcity1"
+        android:text="选择城市"
+        android:textSize="10sp"
+        android:drawableLeft="@mipmap/down"
+        android:drawablePadding="12sp"
+        android:padding="18sp"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/topweather1"
+            android:layout_alignParentRight="true"
+            android:text="天气"
+            android:textSize="12sp"
+            android:padding="18sp"
+            />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/mframe"
