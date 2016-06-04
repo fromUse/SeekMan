@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 
 public class WeatherActivity extends Activity implements View.OnClickListener {
+    private static final String TAG = "WeatherActivity";
     private TextView tv_cityTitle;
     private ImageView iv_status_iamge;
     private TextView tv_currentday_status;
@@ -58,10 +59,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.weather);
 
-        mcityname = "汕尾";
-
         mcityname = getIntent ().getStringExtra ("CITY_NAME");
-
         url = "http://api.map.baidu.com/telematics/v3/weather?location=" + mcityname + "&output=json&ak=FK9mkfdQsloEngodbFl4FeY3";
         findViewById ();
         loadWeather ();
@@ -197,9 +195,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener {
                                     third_data.setText (wea.getDate ());
                                     third_tem.setText (wea.getTemperature ());
                                     break;
-
                             }
-
 
                         }
                     }

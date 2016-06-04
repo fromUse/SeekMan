@@ -99,8 +99,6 @@ public class Fragment_theme extends Fragment {
                     public void onItemClickLister(View view, int position) {
 
                         Intent it = new Intent (getContext (), ActivityDetailsContainer.class);
-
-
                         it.putExtra ("ThemeName", mData.get (position).getTheme_name ());
                         it.putExtra ("THEME_ICON_URL", mData.get (position).getTheme_img ());
                         startActivity (it);

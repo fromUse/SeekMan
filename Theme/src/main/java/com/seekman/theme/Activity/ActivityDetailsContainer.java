@@ -31,6 +31,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class ActivityDetailsContainer extends AppCompatActivity implements Swipe
     private AppBarLayout appBarLayout = null;
     private SwipeRefreshLayout mSwipeRefreshLayout = null;
     private String title = null;
+    private String url =  null;
     private Handler handler = new Handler () {
 
         /**
@@ -73,7 +76,13 @@ public class ActivityDetailsContainer extends AppCompatActivity implements Swipe
     private void data() {
 
         Log.i (TAG, "data: ------------------------------");
+        try {
 
+             url = PublicUtil.THEME_ITEM + URLEncoder.encode (title, "utf-8");
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace ();
+        }
 
         /**启动页面加载json原始数据到本地**/
         new StringLoad (StringLoad.METHOD_GET) {
@@ -97,7 +106,7 @@ public class ActivityDetailsContainer extends AppCompatActivity implements Swipe
 
 
             }
-        }.execute (PublicUtil.THEME_ITEM + title);
+        }.execute (url);
 
 
     }

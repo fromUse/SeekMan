@@ -29,6 +29,8 @@ import com.seekman.square.bean.SendCity_ActivityCson_3;
 import com.seekman.square.bean.WeatherBean;
 import com.seekman.square.bean.WeatherData;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,12 +77,10 @@ public class Fragment_square extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         root = inflater.inflate (R.layout.square_main, null);
-        cityname = "汕尾";
         init ();
         loadWeather ();
         loadActivity (FIRST_LOAD);
         setting ();
-        topcity.setText (cityname);
         return root;
     }
 
@@ -90,20 +90,28 @@ public class Fragment_square extends Fragment {
      */
     public void loadWeather() {
 
-        url = "http://api.map.baidu.com/telematics/v3/weather?location=" + cityname + "&output=json&ak=FK9mkfdQsloEngodbFl4FeY3";
-        new StringLoad (StringLoad.METHOD_GET) {
-            @Override
-            public void executeUI(String result) {
-                //System.out.print(result);
-                if (result != null) {
-                    initWeather (result);
-                } else {
-                    pullRefresh.setRefreshing (false);
-                    Toast.makeText (getContext (), "网络貌似有问题....", Toast.LENGTH_SHORT).show ();
+        try {
+            /**将中文编码成十六进制**/
+             cityname = URLEncoder.encode (cityname, "utf-8");
+            url = "http://api.map.baidu.com/telematics/v3/weather?location=" + cityname + "&output=json&ak=FK9mkfdQsloEngodbFl4FeY3";
+            new StringLoad (StringLoad.METHOD_GET) {
+                @Override
+                public void executeUI(String result) {
+                    //System.out.print(result);
+                    if (result != null) {
+                        initWeather (result);
+                    } else {
+                        pullRefresh.setRefreshing (false);
+                        Toast.makeText (getContext (), "网络貌似有问题....", Toast.LENGTH_SHORT).show ();
+                    }
                 }
-            }
 
-        }.execute (url);
+            }.execute (url);
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace ();
+        }
+
     }
 
     /**
@@ -115,19 +123,30 @@ public class Fragment_square extends Fragment {
         Gson gson = new Gson ();
         WeatherBean bean = gson.fromJson (result, WeatherBean.class);
         if (bean != null) {
-            ArrayList<Results> mResult = bean.getResults ();
-            for (int i = 0; i < mResult.size (); i++) {
-                Results res = mResult.get (i);
-                ArrayList<WeatherData> mWeatherData = res.getWeather_data ();
-                for (int j = 0; j < mWeatherData.size (); j++) {
-                    WeatherData wea = mWeatherData.get (j);
-                    switch (j) {
-                        case 0:
-                            topweather.setText (wea.getWeather ());
-                            break;
+
+            switch (bean.getStatus ()) {
+                case "success":
+                    ArrayList<Results> mResult = bean.getResults ();
+                    for (int i = 0; i < mResult.size (); i++) {
+                        Results res = mResult.get (i);
+                        ArrayList<WeatherData> mWeatherData = res.getWeather_data ();
+                        for (int j = 0; j < mWeatherData.size (); j++) {
+                            WeatherData wea = mWeatherData.get (j);
+                            switch (j) {
+                                case 0:
+                                    topweather.setText (wea.getWeather ());
+                                    break;
+                            }
+                        }
                     }
-                }
+                    break;
+
+                case "No result available":
+                    Toast.makeText (getContext (), "当前城市天气查询不到....", Toast.LENGTH_LONG).show ();
+                    break;
+
             }
+
         }
 
     }
@@ -243,13 +262,11 @@ public class Fragment_square extends Fragment {
 
         SendCity_ActivityCson_3 send = gson.fromJson (result, SendCity_ActivityCson_3.class);
 
-        if (send != null)
-        {
+        if (send != null) {
             /**记得判断状态码**/
             /**当状态码为200表示list有数据**/
 
-            switch (send.getStatus ())
-            {
+            switch (send.getStatus ()) {
                 case "200":
                     List<City_ActivityGsonData> list = send.getList ();
                     for (int i = 0; i < list.size (); i++) {
@@ -311,6 +328,7 @@ public class Fragment_square extends Fragment {
             }
             /**通知UI线程隐藏  圈圈**/
             pullRefresh.setRefreshing (false);
+            initWeather (result);
         }
 
 
@@ -402,7 +420,9 @@ public class Fragment_square extends Fragment {
         square_recyclerview = (RecyclerView) root.findViewById (R.id.square_recyclerview);
 
         pullRefresh = (SwipeRefreshLayout) root.findViewById (R.id.pullRefresh);
-    }
 
+        cityname = getContext ().getString(R.string.default_city);
+        topcity.setText (cityname);
+    }
 
 }
