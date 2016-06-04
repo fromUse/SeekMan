@@ -13,10 +13,13 @@ public class PublicUtil {
 
     public static final String HOST = "http://172.30.84.10:8082";
 
+    /**获取主题分类**/
     public static final String THEME_CATEGORY = HOST + "/AndroidServer/themegson";
-
-
+    /**获取活动条目**/
     public static final String THEME_ITEM = HOST + "/AndroidServer/sendactivitygson?theme_name=";
+    /**发布活动**/
+    public static final String PUBLISH_ACTIVITY = HOST + "/AndroidServer/activityservlet";
+
 
 
 

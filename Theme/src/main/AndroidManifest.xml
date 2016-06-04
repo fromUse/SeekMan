@@ -11,6 +11,8 @@
         </activity>
         <activity android:name=".Activity.ThemeDetailsActivity">
         </activity>
+        <activity android:name="com.seekman.library.activity.PublishActivity">
+        </activity>
     </application>
 
 </manifest>

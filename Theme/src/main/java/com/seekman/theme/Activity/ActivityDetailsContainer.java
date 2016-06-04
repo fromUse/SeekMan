@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.seekman.library.activity.PublishActivity;
 import com.seekman.library.bean.ActivityBean;
 import com.seekman.library.bean.ImageURL;
 import com.seekman.library.utils.ImageLoad;
@@ -245,6 +246,12 @@ public class ActivityDetailsContainer extends AppCompatActivity implements Swipe
 
     public void addActivity(View v){
 
-        Toast.makeText (this,"发布活动",Toast.LENGTH_SHORT).show ();
+        //Toast.makeText (this,"发布活动",Toast.LENGTH_SHORT).show ();
+
+        /**判断用户是否登陆**/
+
+        Intent it =  new Intent (this, PublishActivity.class);
+
+        startActivity (it);
     }
 }

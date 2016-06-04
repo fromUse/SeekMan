@@ -47,25 +47,28 @@ public class ThemeCategoryAdapter extends RecyclerView.Adapter<ThemeCategoryAdap
 
     @Override
     public void onBindViewHolder(ThemeViewHolder holder, final int position) {
-        Theme themeItemData = mData.get (position);
 
+            Theme themeItemData = mData.get (position);
+            holder.mThemeItem.setOnClickListener (new View.OnClickListener () {
 
-
-        holder.mThemeItem.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                if (itemClickLister != null) {
-                    itemClickLister.onItemClickLister (v,position);
+                @Override
+                public void onClick(View v) {
+                    if (itemClickLister != null) {
+                        itemClickLister.onItemClickLister (v, position);
+                    }
                 }
-            }
-        });
+            });
 
-        holder.mThemeTitle.setText (themeItemData.getTheme_name ());
+            holder.mThemeTitle.setText (themeItemData.getTheme_name ());
 
-        ImageView icon = holder.mThemeCategoryIcon;
-        icon.setTag (mData.get (position).getTheme_img ());
+            ImageView icon = holder.mThemeCategoryIcon;
+            icon.setTag (mData.get (position).getTheme_img ());
 
-        new ImageLoad (icon).execute (mData.get (position).getTheme_img ());
+            new ImageLoad (icon).execute (mData.get (position).getTheme_img ());
+
+
+
+
     }
 
     @Override

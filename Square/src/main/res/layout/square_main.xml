@@ -12,12 +12,4 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 
-
-    <Button
-        android:id="@+id/bt_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="广场_点击测试"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
 </RelativeLayout>

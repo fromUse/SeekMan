@@ -31,7 +31,7 @@
                 android:paddingBottom="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_tem_border_top"
+                android:background="@drawable/date_border"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
                 android:text="生命在于运动 标题"/>
@@ -40,7 +40,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_tem_border_top">
+                android:background="@drawable/date_border">
 
                 <TextView
                     android:paddingTop="2dp"
@@ -73,19 +73,30 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_tem_border_top"
+                android:background="@drawable/date_border"
                 android:drawableLeft="@android:drawable/ic_menu_recent_history"
                 android:drawablePadding="20dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="2016/5/30 14:00-16:00"/>
+                android:text="2016/5/30 14:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/date_border"
+                android:drawableLeft="@android:drawable/ic_menu_recent_history"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="2016/5/3 16:00"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_tem_border_top"
+                android:background="@drawable/date_border"
                 android:drawableLeft="@android:drawable/ic_dialog_map"
                 android:drawablePadding="20dp"
                 android:gravity="center_vertical"
@@ -99,7 +110,7 @@
                 android:paddingBottom="2dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/list_tem_border_top"
+                android:background="@drawable/date_border"
                 android:drawableLeft="@android:drawable/ic_menu_call"
                 android:drawablePadding="20dp"
                 android:gravity="center_vertical"
@@ -111,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_tem_border_top"
+                android:background="@drawable/date_border"
                 android:text="走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫走进铜鼎山 在郊野公园漫步 江南深秋的阳光 金黄着她的温柔 野花、小草、落叶 都成为交流的主题 和草木有关的话语 轻易地就让人打开心扉 这是令人舒心的时刻 风把天地万物一一抚过 大气充满草木馥郁的气息 内心欲望的火焰，被自然熄灭 尘世中的烦恼了无踪迹 每一颗心都展开翅膀 轻轻飞过森林中无数的花瓣 花朵的喜悦在每一片心田弥漫"/>
 
 
@@ -128,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/list_tem_border_top"
+            android:background="@drawable/date_border"
             android:orientation="horizontal">
 
             <TextView
