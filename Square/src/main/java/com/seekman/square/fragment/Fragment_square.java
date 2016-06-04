@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +18,8 @@ import com.seekman.library.utils.StringLoad;
 import com.seekman.square.R;
 import com.seekman.square.activity.CityPickerActivity;
 import com.seekman.square.activity.WeatherActivity;
-import com.seekman.square.adapter.GridViewAdapter;
+import com.seekman.square.adapter.RecyclerViewAdapter;
+import com.seekman.square.adapter.SpacesItemDecoration;
 import com.seekman.square.bean.City_ActivityGsonData;
 import com.seekman.square.bean.Results;
 import com.seekman.square.bean.SendCity_ActivityCson_3;
@@ -36,23 +37,25 @@ public class Fragment_square extends Fragment {
     private TextView topcity;
     private TextView topweather;
     private String uli;
-    private GridView gridView;
+    //     private GridView gridView;
     private List<City_ActivityGsonData> mData = null;
-    private GridViewAdapter adapter = null;
+    //   private GridViewAdapter adapter = null;
+    /** 改用RecyclerView **/
+    private RecyclerView square_recyclerview = null;
+    private RecyclerViewAdapter recyclerViewAdapter = null;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         root = inflater.inflate (R.layout.square_main, null);
-        cityname = "广州";
+        cityname = "汕尾";
         init ();
-        data ();
-        setting ();
-        lister ();
         jump ();
         weather ();
         inUli ();
+        data ();
+        setting ();
         topcity.setText (cityname);
         return root;
     }
@@ -124,8 +127,20 @@ public class Fragment_square extends Fragment {
                     for (int i = 0; i < list.size (); i++) {
                         City_ActivityGsonData activity = list.get (i);
                         mData.add (activity);
-                        adapter = new GridViewAdapter (mData, getContext ());
-                        gridView.setAdapter (adapter);
+                        //   adapter = new GridViewAdapter (mData, getContext ());
+                        //          gridView.setAdapter (adapter);
+
+
+                        /**给RecyclerView设置适配器**/
+                        recyclerViewAdapter = new RecyclerViewAdapter (mData, getContext ());
+                        /**当网络加载完成后在设置事件的监听**/
+                        lister ();
+
+                        square_recyclerview.setAdapter (recyclerViewAdapter);
+                        square_recyclerview.setLayoutManager (new GridLayoutManager (getContext (), 2, GridLayoutManager.VERTICAL, false));
+                        square_recyclerview.addItemDecoration (new SpacesItemDecoration (3));
+
+
                     }
                 }
 
@@ -171,10 +186,26 @@ public class Fragment_square extends Fragment {
                 startActivity (intent);
             }
         });
-        gridView.setOnItemClickListener (new AdapterView.OnItemClickListener () {
+
+
+     /*   gridView.setOnItemClickListener (new AdapterView.OnItemClickListener () {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText (getContext (), "itemid:" + id, Toast.LENGTH_LONG).show ();
+            }
+        });*/
+
+
+        /**给控件设置自定义点击事件**/
+        recyclerViewAdapter.setOnItemLister (new RecyclerViewAdapter.ItemClickLister () {
+            @Override
+            public void onItemClickLister(View view, int position) {
+                Toast.makeText (getContext (), "Click  :" + position, Toast.LENGTH_LONG).show ();
+            }
+
+            @Override
+            public void onLongItemClickLister(View view, int position) {
+                Toast.makeText (getContext (), "longClick  :" + position, Toast.LENGTH_LONG).show ();
             }
         });
 
@@ -182,9 +213,11 @@ public class Fragment_square extends Fragment {
 
     //初始化
     private void init() {
-        gridView = (GridView) root.findViewById (R.id.gridView);
+        //  gridView = (GridView) root.findViewById (R.id.gridView);
         topcity = (TextView) root.findViewById (R.id.topcity);
         topweather = (TextView) root.findViewById (R.id.topweather);
+
+        square_recyclerview = (RecyclerView) root.findViewById (R.id.square_recyclerview);
     }
 
 

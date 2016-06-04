@@ -2,7 +2,6 @@ package com.seekman.square.adapter;
 
 import android.content.Context;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class GridViewAdapter extends BaseAdapter {
         City_ActivityGsonData item = null;
         if (convertView == null) {
             hold = new ViewHold();
-            convertView = LayoutInflater.from(context).inflate(R.layout.gridview,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.recyclerview_item,null);
             hold.img = (ImageView) convertView.findViewById(R.id.gidviewimage);
             hold.title = (TextView) convertView.findViewById(R.id.texttitle);
             hold.address = (TextView) convertView.findViewById(R.id.address);

@@ -22,7 +22,7 @@
             android:layout_marginLeft="10dp"
             android:clickable="true"
             android:onClick="backContext"
-            android:src="@android:drawable/ic_menu_revert"/>
+            android:src="@mipmap/ic_back"/>
 
         <TextView
             android:id="@+id/title"
