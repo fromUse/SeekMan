@@ -32,7 +32,7 @@ public class MD5 {
 			s = new String(str).toUpperCase(); // 换后的结果转换为字符�?
 
 		} catch (Exception e) {
-			e.printStackTrace ();
+
 		}
 		return s;
 	}

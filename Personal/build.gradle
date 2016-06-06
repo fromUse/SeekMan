@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.0 rc3"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -18,9 +18,32 @@ android {
     }
 }
 
+
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile project(':library')
+    compile project(':onekeyshare')
+    compile project(':SMSSDK')
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile project(':libzxing')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile files('libs/MobCommons-2016.0303.1229.jar')
+    compile files('libs/MobTools-2016.0303.1229.jar')
+    compile files('libs/SMSSDK-2.0.2.jar')
+    compile files('libs/MobTools-2016.0426.1819.jar')
+    compile files('libs/ShareSDK-QQ-2.7.2.jar')
+    compile files('libs/ShareSDK-QZone-2.7.2.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.7.2.jar')
+    compile files('libs/ShareSDK-WhatsApp-2.7.2.jar')
+    compile files('libs/ShareSDK-Yixin-2.7.2.jar')
+    compile files('libs/ShareSDK-Yixin-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-Yixin-Moments-2.7.2.jar')
+    compile files('libs/weiboSDKCore_3.1.4.jar')
 }

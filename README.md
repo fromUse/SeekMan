@@ -1,5 +1,5 @@
 # SeekMan
-# com.seekman.activity
+# activity
             专门放Activity
 	- Activity统一继承AppCompatActivity
 # adapter

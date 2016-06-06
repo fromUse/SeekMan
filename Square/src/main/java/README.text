@@ -1,7 +1,7 @@
 # 包名目录说明
 本模块是 ：Square
 - app: [ 本应用的整体调用者 调用其他模块 ]
-    # com.seekman.activity
+    # activity
             专门放Activity
                 Activity统一继承AppCompatActivity
     # adapter
