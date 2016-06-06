@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.seekman.R;
 import com.seekman.library.template.BasicActivity;
@@ -21,7 +20,6 @@ import com.seekman.theme.fragment.Fragment_theme;
 public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener {
     private RadioGroup group;
     private RadioButton main_square;
-    private TextView mTitle = null;
     //private RadioButton main_theme;
    // private RadioButton main_personal;
     private FragmentManager fragmentManager;
@@ -68,7 +66,6 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
         //初始化FragmentManager
         fragmentManager = getSupportFragmentManager();
         changeFragment(new Fragment_square (),false);
-        mTitle = (TextView) findViewById (R.id.title);
 
 
     }
@@ -78,15 +75,12 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
         switch (checkedId){
             case R.id.main_square:
                 changeFragment(new Fragment_square(),true);
-                mTitle.setText (getString(R.string.square_title));
                 break;
             case R.id.main_theme:
                 changeFragment(new Fragment_theme (),true);
-                mTitle.setText (getString(R.string.theme_title));
                 break;
             case R.id.main_personal:
                 changeFragment(new Fragment_personal (),true);
-                mTitle.setText (getString(R.string.personal));
                 break;
             default:
                 break;
@@ -95,6 +89,7 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
     //切换不同的fragment
     public void changeFragment(Fragment fragment, boolean isInit){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setCustomAnimations (R.anim.start_in_fragment, R.anim.end_out_fragment);
         //将SharedPreferences的数据传递到fragment
         Bundle bundle = new Bundle();
         bundle.putString("iflogin",iflogin);

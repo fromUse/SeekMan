@@ -4,11 +4,15 @@
         "source": "/home/chen-gui/opt/SeekMan-mobCheck/F:\\git\\SeekMan-mobCheck\\SMSSDK\\build\\intermediates\\bundles\\debug\\res\\raw\\libs"
     },
     {
+        "merged": "/home/chen-gui/opt/SeekMan-mobCheck/F:\\home\\chen-gui\\AndroidStudioProjects\\SeekMan\\SMSSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libs",
+        "source": "/home/chen-gui/opt/SeekMan-mobCheck/F:\\home\\chen-gui\\AndroidStudioProjects\\SeekMan\\SMSSDK\\build\\intermediates\\bundles\\debug\\res\\raw\\libs"
+    },
+    {
         "merged": "/home/chen-gui/opt/SeekMan-mobCheck/SMSSDK/build/intermediates/res/merged/androidTest/debug/raw/libs",
         "source": "/home/chen-gui/opt/SeekMan-mobCheck/SMSSDK/build/intermediates/bundles/debug/res/raw/libs"
     },
     {
-        "merged": "/home/chen-gui/opt/SeekMan-mobCheck/F:\\home\\chen-gui\\AndroidStudioProjects\\SeekMan\\SMSSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libs",
-        "source": "/home/chen-gui/opt/SeekMan-mobCheck/F:\\home\\chen-gui\\AndroidStudioProjects\\SeekMan\\SMSSDK\\build\\intermediates\\bundles\\debug\\res\\raw\\libs"
+        "merged": "/home/chen-gui/opt/SeekMan2/SMSSDK/build/intermediates/res/merged/androidTest/debug/raw/libs",
+        "source": "/home/chen-gui/opt/SeekMan2/SMSSDK/build/intermediates/bundles/debug/res/raw/libs"
     }
 ]

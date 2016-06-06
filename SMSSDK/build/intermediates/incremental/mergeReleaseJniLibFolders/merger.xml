@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/chen-gui/opt/SeekMan-mobCheck/SMSSDK/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/home/chen-gui/opt/SeekMan-mobCheck/SMSSDK/build-types/release/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/chen-gui/opt/SeekMan2/SMSSDK/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/home/chen-gui/opt/SeekMan2/SMSSDK/build-types/release/jniLibs"/></dataSet></merger>

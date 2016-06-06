@@ -51,9 +51,6 @@
         <uses-permission android:name="android.permission.BLUETOOTH" />
         <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-
-
-
             <!--<activity
                 android:name="com.mob.tools.MobUIShell"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -92,6 +89,8 @@
                 android:exported="true"
                 android:screenOrientation="portrait" />
 
+        <activity android:name=".square.activity.CityPickerActivity"/>
+        <activity android:name=".square.activity.WeatherActivity"/>
     </application>
 
 </manifest>

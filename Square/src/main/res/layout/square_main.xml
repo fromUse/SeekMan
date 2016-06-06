@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/bt_test"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#0080FF"
+            android:gravity="center"
+            android:text="广场"
+            android:textColor="#ffffff"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/topcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/down"
+            android:drawablePadding="10sp"
+            android:padding="18sp"
+            android:text="选择城市"
+            android:textSize="11sp"
+            />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/topweather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="18sp"
+            android:text="天气"
+            android:textSize="12sp"
+            />
+    </RelativeLayout>
+
+    <!--
+    <GridView
+        android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="广场_点击测试"/>
+        android:layout_below="@+id/relativeLayout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="4dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"/>
+     -->
+
+
+    <!-- 下拉刷新容器  -->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/pullRefresh"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingTop="10dp"
+            android:id="@+id/square_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
 </RelativeLayout>
