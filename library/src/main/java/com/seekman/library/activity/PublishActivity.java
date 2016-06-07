@@ -16,7 +16,11 @@ import com.seekman.library.R;
 import com.seekman.library.utils.PublicUtil;
 import com.seekman.library.utils.StringLoad;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class PublishActivity extends AppCompatActivity implements View.OnClickListener {
@@ -202,7 +206,7 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
 
-                start_activity_date.setText (year + "/" + (monthOfYear + 1 )+ "/" + dayOfMonth);
+                start_activity_date.setText (year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
             }
         }, year, month, day).show ();
     }
@@ -228,7 +232,7 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
         Toast.makeText (this, "发布活动", Toast.LENGTH_SHORT).show ();
 
 
-        StringBuffer post_param = new StringBuffer ();
+       // StringBuffer post_param = new StringBuffer ();
 
         /*post_param.append ("?att_title=" + activity_title.getText ());
 
@@ -244,7 +248,7 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
 
         post_param.append ("&theme_name=" + "其他");
         */
-        post_param.append ("?att_title=" + "标题111111111111");
+        /*post_param.append ("?att_title=" + "标题111111111111");
 
         post_param.append ("&att_time=" + "2016/6/15 16:30 - 2016/6/20 19:00");
 
@@ -256,20 +260,56 @@ public class PublishActivity extends AppCompatActivity implements View.OnClickLi
 
         post_param.append ("&city_name=" + "昵称141984");
 
-        post_param.append ("&theme_name=" + "其他");
+        post_param.append ("&theme_name=" + "其他");*/
 
-        new StringLoad (StringLoad.METHOD_GET) {
+        Map<String, String> params = new HashMap<String,String> ();
+
+        params.put ("att_title",activity_title.getText ().toString ());
+        params.put ("att_time",start_activity_date.getText ().toString () + " " + start_activity_time.getText ().toString ());
+        params.put ("att_address",activity_address.getText ().toString ());
+        params.put ("att_content",activity_details.getText ().toString ());
+        params.put ("user_nickname","conykais");
+        params.put ("city_name","汕尾");
+        params.put ("theme_name","其他");
+
+        String par = getParamsByURLEncoder(params,"UTF-8");
+        Log.i (TAG, "publishActivity:      " + par) ;
+        new StringLoad (StringLoad.METHOD_POST) {
             @Override
             public void executeUI(String result) {
 
-                Log.i (TAG, "executeUI:  "  + result);
+                Log.i (TAG, "executeUI:  " + result);
 
             }
-        }.execute (PublicUtil.PUBLISH_ACTIVITY +post_param.toString ());
+        }.execute (PublicUtil.PUBLISH_ACTIVITY ,par);
 
-        Log.i (TAG, "publishActivity: "  + PublicUtil.PUBLISH_ACTIVITY +post_param.toString ()) ;
+       // Log.i (TAG, "publishActivity: " + PublicUtil.PUBLISH_ACTIVITY + par);
 
     }
 
+    /**
+     * 将参数进行16进制编码
+     * @param params
+     * @param encode
+     * @return
+     */
+    public String getParamsByURLEncoder (Map<String, String> params, String encode) {
+        StringBuilder stringBuilder = new StringBuilder ();
+        if (params != null && !params.isEmpty ()) {
+            for (Map.Entry<String, String> entry : params.entrySet ()) {
+                try {
+                    stringBuilder
+                            .append (entry.getKey ())
+                            .append ("=")
+                            .append (URLEncoder.encode (entry.getValue (), encode))
+                            .append ("&");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace ();
+                }
+            }
+            stringBuilder.deleteCharAt (stringBuilder.length () - 1);
 
+        }
+                return stringBuilder.toString ();
+    }
 }

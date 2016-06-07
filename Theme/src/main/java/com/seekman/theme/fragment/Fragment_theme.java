@@ -55,7 +55,7 @@ public class Fragment_theme extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        Log.i (TAG, "onCreateView: -------------------Fragment_square----------------------");
         root = inflater.inflate (R.layout.theme_category_content, null);
 
         init ();

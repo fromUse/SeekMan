@@ -60,6 +60,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * Created by alice on 2016/5/19.
  */
 public class Fragment_personal extends Fragment {
+    private static final String TAG = "Fragment_personal";
 //个人
     /**
      * init()方法进行初始化
@@ -89,7 +90,7 @@ public class Fragment_personal extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        Log.i (TAG, "onCreateView: -------------------Fragment_square----------------------");
         root = inflater.inflate(R.layout.personal_main, null);
 
         /*new CentextThis().shareUserFile();*/
@@ -98,7 +99,6 @@ public class Fragment_personal extends Fragment {
         data();
         setting();
         lister();
-
         return root;
     }
 
