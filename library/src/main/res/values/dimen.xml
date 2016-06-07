@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--字体大小-->
+    <dimen name="tetle_text_size">20sp</dimen>
+    <dimen name="message_text_size">18sp</dimen>
+    <dimen name="edit_text_size">14sp</dimen>
+    <dimen name="min_text_size">12sp</dimen>
+    
+    <!--间距-->
+    <dimen name="normal_space">10dp</dimen>
+    <dimen name="little_space">5dp</dimen>
+    <dimen name="big_space">20dp</dimen>
+    
+    <!--高度-->
+    <dimen name="normal_height">45dp</dimen>
+
+
+    <dimen name="side_letter_bar_letter_size">12sp</dimen>
+    <dimen name="side_letter_bar_width">36dp</dimen>
+    <dimen name="city_text_size">16sp</dimen>
+</resources>

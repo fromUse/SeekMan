@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class Fragment_square extends Fragment {
     private TextView topweather;
     private String url;
     //     private GridView gridView;
-    private List<City_ActivityGsonData> mData = null;
+    public  List<City_ActivityGsonData> mData = null;
     //   private GridViewAdapter adapter = null;
     /** 改用RecyclerView **/
     private RecyclerView square_recyclerview = null;
@@ -76,6 +77,7 @@ public class Fragment_square extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        Log.i (TAG, "onCreateView: -------------------Fragment_square----------------------");
         root = inflater.inflate (R.layout.square_main, null);
         init ();
         loadWeather ();
@@ -92,7 +94,7 @@ public class Fragment_square extends Fragment {
 
         try {
             /**将中文编码成十六进制**/
-             cityname = URLEncoder.encode (cityname, "utf-8");
+            cityname = URLEncoder.encode (cityname, "utf-8");
             url = "http://api.map.baidu.com/telematics/v3/weather?location=" + cityname + "&output=json&ak=FK9mkfdQsloEngodbFl4FeY3";
             new StringLoad (StringLoad.METHOD_GET) {
                 @Override
@@ -144,7 +146,6 @@ public class Fragment_square extends Fragment {
                 case "No result available":
                     Toast.makeText (getContext (), "当前城市天气查询不到....", Toast.LENGTH_LONG).show ();
                     break;
-
             }
 
         }

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.0 rc3"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -18,9 +18,12 @@ android {
     }
 }
 
+
+
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile project(':library')
+    provided fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'junit:junit:4.12'
+    compile project(':onekeyshare')
+    compile project(':libzxing')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Personal</string>
+    <string-array name="dialog_list_array">
+        <item>关于软件</item>
+        <item>检查更新</item>
+        <item>建议反馈</item>
+        <item>退出登录</item>
+    </string-array>
 </resources>

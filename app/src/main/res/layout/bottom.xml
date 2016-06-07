@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
     <FrameLayout
         android:id="@+id/mframe"
         android:layout_width="match_parent"
@@ -12,7 +11,6 @@
     </FrameLayout>
     
     <RadioGroup
-        android:background="@drawable/list_tem_border_top"
         android:id="@+id/mRadioGroup"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -30,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="广场"
-            />
+            android:checked="false" />
         <RadioButton
             android:id="@+id/main_theme"
             android:layout_weight="1"
@@ -60,4 +58,6 @@
             android:text="个人"
             />
     </RadioGroup>
+
+
 </LinearLayout>

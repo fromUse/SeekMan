@@ -1,1 +1,1 @@
-include ':app', ':library', ':Theme', ':Personal', ':Square'
+include ':app', ':library', ':Theme', ':Personal', ':Square',':onekeyshare', ':libzxing'
