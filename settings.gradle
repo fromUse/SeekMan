@@ -1,1 +1,1 @@
-include ':app', ':library', ':Theme', ':Personal', ':Square', ':SMSSDK', ':sharesdk', ':sharesdk', ':onekeyshare', ':libzxing'
+include ':app', ':library', ':Theme', ':Personal', ':Square',':onekeyshare', ':libzxing'

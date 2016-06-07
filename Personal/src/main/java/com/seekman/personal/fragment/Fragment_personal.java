@@ -2,7 +2,6 @@ package com.seekman.personal.fragment;
 
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,31 +26,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.seekman.library.bean.ImageURL;
 import com.seekman.library.utils.ImageLoad;
 import com.seekman.library.utils.StringLoad;
 import com.seekman.personal.R;
-import com.sina.weibo.sdk.call.Position;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.xys.libzxing.zxing.encoding.EncodingUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
@@ -91,51 +72,56 @@ public class Fragment_personal extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i (TAG, "onCreateView: -------------------Fragment_square----------------------");
-        root = inflater.inflate(R.layout.personal_main, null);
+        root = inflater.inflate (R.layout.personal_main, null);
 
         /*new CentextThis().shareUserFile();*/
 
-        init();
-        data();
-        setting();
-        lister();
+        init ();
+        data ();
+        setting ();
+        lister ();
         return root;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult (requestCode, resultCode, data);
         //登录成功发送过来的数据
         if (requestCode == 3 && resultCode == Activity.CONTEXT_INCLUDE_CODE) {
-            username = data.getStringExtra("username");
-            iflogin = data.getStringExtra("iflogin");
-            Log.d("登陆成功接收到username-------------", username);
+            username = data.getStringExtra ("username");
+            iflogin = data.getStringExtra ("iflogin");
 
-            if (iflogin.equals("true")) {
-                sharedInformation(username);
- //              personal_userText.setText(settextname);
+            SharedPreferences obj = getContext ().getSharedPreferences ("usefile", Context.MODE_APPEND);
+            SharedPreferences.Editor edit = obj.edit ();
+            edit.putString ("iflogin", "true");
+
+            edit.commit ();
+            Log.d (TAG, "onActivityResult: 登陆成功接收到username-------------" + username);
+            if (iflogin.equals ("true")) {
+                sharedInformation (username);
+                //              personal_userText.setText(settextname);
 //                Log.d("sharedInformation--------", iflogin);
             }
 //            Log.d("iflogin--------", iflogin);
-            Log.d("username-------", username);
+            Log.d ("username-------", username);
         }
 
         //二维码扫描成功发送过来的数据
         if (resultCode == Activity.RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            String result = bundle.getString("result");
-            LayoutInflater codeSaoInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View codeSaoDialog = codeSaoInflater.inflate(R.layout.code_sao_dialog, null);
-            code_sao_text = (TextView) codeSaoDialog.findViewById(R.id.code_sao_text);
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            Bundle bundle = data.getExtras ();
+            String result = bundle.getString ("result");
+            LayoutInflater codeSaoInflater = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+            View codeSaoDialog = codeSaoInflater.inflate (R.layout.code_sao_dialog, null);
+            code_sao_text = (TextView) codeSaoDialog.findViewById (R.id.code_sao_text);
+            AlertDialog.Builder builder = new AlertDialog.Builder (getActivity ());
+            builder.setNegativeButton ("确定", new DialogInterface.OnClickListener () {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     //不做代码执行
                 }
             });
-            code_sao_text.setText(result);
-            builder.create().show();
+            code_sao_text.setText (result);
+            builder.create ().show ();
         }
     }
 
@@ -147,243 +133,241 @@ public class Fragment_personal extends Fragment {
 
     //事件监听
     private void lister() {
-        personal_userText.setOnClickListener(new View.OnClickListener() {
+        personal_userText.setOnClickListener (new View.OnClickListener () {
 
             @Override
             public void onClick(View v) {
-                if (personal_userText.getText().toString().equals("点击登录")) {
-                    startActivityForResult(new Intent(getActivity(), LoginActivity.class), 3);
+                if (personal_userText.getText ().toString ().equals ("点击登录")) {
+                    startActivityForResult (new Intent (getActivity (), LoginActivity.class), 3);
                 } else {
-                    startActivity(new Intent(getActivity(), InformationActivity.class));
+                    startActivity (new Intent (getActivity (), InformationActivity.class));
                 }
             }
         });
 
-        personal_userImage.setOnClickListener(new View.OnClickListener() {
+        personal_userImage.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("image/*");
-                startActivity(intent);
+                Intent intent = new Intent (Intent.ACTION_GET_CONTENT);
+                intent.addCategory (Intent.CATEGORY_OPENABLE);
+                intent.setType ("image/*");
+                startActivity (intent);
             }
         });
-        personal_userInformation.setOnClickListener(new View.OnClickListener() {
+        personal_userInformation.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
                 /*String nickname = personal_userText.getText().toString();*/
-                startActivity(new Intent(getActivity(), InformationActivity.class));
+
+                startActivity (new Intent (getActivity (), InformationActivity.class));
             }
         });
 
-        personal_item_RQcode.setOnClickListener(new View.OnClickListener() {
+        personal_item_RQcode.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                RQcode();
+                RQcode ();
             }
         });
-        personal_item_RQcodeSao.setOnClickListener(new View.OnClickListener() {
+        personal_item_RQcodeSao.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                RQcodeSao();
-            }
-        });
-
-        personal_item_friends.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawable();
+                RQcodeSao ();
             }
         });
 
-        personal_item_sett.setOnClickListener(new View.OnClickListener() {
+        personal_item_friends.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                settDialog();
+                drawable ();
             }
         });
 
-        personal_item_photos.setOnClickListener(new View.OnClickListener() {
+        personal_item_sett.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("image/*");
-                startActivity(intent);
+                settDialog ();
             }
         });
-        personal_item_usercall.setOnClickListener(new View.OnClickListener() {
+
+        personal_item_photos.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_INSERT);
-                intent.setType("vnd.android.cursor.dir/person");
-                intent.setType("vnd.android.cursor.dir/contact");
-                intent.setType("vnd.android.cursor.dir/raw_contact");
-                startActivity(intent);
+                Intent intent = new Intent (Intent.ACTION_GET_CONTENT);
+                intent.addCategory (Intent.CATEGORY_OPENABLE);
+                intent.setType ("image/*");
+                startActivity (intent);
+            }
+        });
+        personal_item_usercall.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (Intent.ACTION_INSERT);
+                intent.setType ("vnd.android.cursor.dir/person");
+                intent.setType ("vnd.android.cursor.dir/contact");
+                intent.setType ("vnd.android.cursor.dir/raw_contact");
+                startActivity (intent);
             }
         });
     }
 
     private void RQcodeSao() {
-        startActivityForResult(new Intent(getActivity(), CaptureActivity.class), 0);
+        startActivityForResult (new Intent (getActivity (), CaptureActivity.class), 0);
     }
 
     private void RQcode() {
-        String mName = personal_userText.getText().toString();
-        if (mName.equals("点击登录")) {
-            startActivityForResult(new Intent(getActivity(), LoginActivity.class), 3);
+        String mName = personal_userText.getText ().toString ();
+        if (mName.equals ("点击登录")) {
+            startActivityForResult (new Intent (getActivity (), LoginActivity.class), 3);
         } else {
-            LayoutInflater CodeInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View codeDialog = CodeInflater.inflate(R.layout.code_name_dialog, null);
-            code_name_text = (TextView) codeDialog.findViewById(R.id.code_name_text);
-            code_name_image = (ImageView) codeDialog.findViewById(R.id.code_name_image);
-            AlertDialog.Builder codeBuilder = new AlertDialog.Builder(getActivity());
-            Bitmap bitmp = EncodingUtils.createQRCode(mName, 500, 500,
-                    BitmapFactory.decodeResource(getResources(), R.mipmap.logo));
-            code_name_image.setImageBitmap(bitmp);
-            codeBuilder.create().show();
+            LayoutInflater CodeInflater = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+            View codeDialog = CodeInflater.inflate (R.layout.code_name_dialog, null);
+            code_name_text = (TextView) codeDialog.findViewById (R.id.code_name_text);
+            code_name_image = (ImageView) codeDialog.findViewById (R.id.code_name_image);
+            AlertDialog.Builder codeBuilder = new AlertDialog.Builder (getActivity ());
+            Bitmap bitmp = EncodingUtils.createQRCode (mName, 500, 500,
+                    BitmapFactory.decodeResource (getResources (), R.mipmap.logo));
+            code_name_image.setImageBitmap (bitmp);
+            codeBuilder.create ().show ();
         }
     }
 
 
     //下载对话框
     private void drawable() {
-        LayoutInflater drawable_inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View drawable_dialog = drawable_inflater.inflate(R.layout.drawable_dialog, null);
-        drawable_image = (ImageView) drawable_dialog.findViewById(R.id.drawable_image);
-        drawable_intent = (TextView) drawable_dialog.findViewById(R.id.drawable_intent);
-        AlertDialog.Builder drawable_builder = new AlertDialog.Builder(getActivity());
-        drawable_builder.setView(drawable_dialog);
-        drawable_intent.setOnClickListener(new View.OnClickListener() {
+        LayoutInflater drawable_inflater = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+        View drawable_dialog = drawable_inflater.inflate (R.layout.drawable_dialog, null);
+        drawable_image = (ImageView) drawable_dialog.findViewById (R.id.drawable_image);
+        drawable_intent = (TextView) drawable_dialog.findViewById (R.id.drawable_intent);
+        AlertDialog.Builder drawable_builder = new AlertDialog.Builder (getActivity ());
+        drawable_builder.setView (drawable_dialog);
+        drawable_intent.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent().setAction(Intent.ACTION_VIEW)
-                        .setData(Uri.parse(drawable_intent.getText().toString()))
-                        .setClassName("com.android.browser", "com.android.browser.BrowserActivity"));
+                startActivity (new Intent ().setAction (Intent.ACTION_VIEW)
+                        .setData (Uri.parse (drawable_intent.getText ().toString ()))
+                        .setClassName ("com.android.browser", "com.android.browser.BrowserActivity"));
             }
         });
-        drawable_builder.create().show();
+        drawable_builder.create ().show ();
     }
 
     //设置对话框
     private void settDialog() {
-        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View dialogView = inflater.inflate(R.layout.personal_dialog, null);
-        dialogList = (ListView) dialogView.findViewById(R.id.persional_dialog_list);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(dialogView);
-        dialogList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        LayoutInflater inflater = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+        View dialogView = inflater.inflate (R.layout.personal_dialog, null);
+        dialogList = (ListView) dialogView.findViewById (R.id.persional_dialog_list);
+        AlertDialog.Builder builder = new AlertDialog.Builder (getActivity ());
+        builder.setView (dialogView);
+        dialogList.setOnItemClickListener (new AdapterView.OnItemClickListener () {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        LayoutInflater inflater1 = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        View dialogLayout = inflater1.inflate(R.layout.personal_dialog_image, null);
-                        ImageView imageView = (ImageView) dialogLayout.findViewById(R.id.personal_dialog_image);
-                        imageView.setImageResource(R.mipmap.logo);
-                        TextView textView = (TextView) dialogLayout.findViewById(R.id.personal_dialog_text);
-                        textView.setText("Let's go 1.0.0");
-                        AlertDialog.Builder imageBuilder = new AlertDialog.Builder(getActivity());
-                        imageBuilder.setView(dialogLayout);
-                        imageBuilder.create().show();
+                        LayoutInflater inflater1 = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                        View dialogLayout = inflater1.inflate (R.layout.personal_dialog_image, null);
+                        ImageView imageView = (ImageView) dialogLayout.findViewById (R.id.personal_dialog_image);
+                        imageView.setImageResource (R.mipmap.logo);
+                        TextView textView = (TextView) dialogLayout.findViewById (R.id.personal_dialog_text);
+                        textView.setText ("Let's go 1.0.0");
+                        AlertDialog.Builder imageBuilder = new AlertDialog.Builder (getActivity ());
+                        imageBuilder.setView (dialogLayout);
+                        imageBuilder.create ().show ();
                         break;
                     case 1:
-                        Toast.makeText(getActivity(), "纳尼！居然是最新版！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText (getActivity (), "纳尼！居然是最新版！", Toast.LENGTH_SHORT).show ();
                         break;
                     case 2:
-                        LayoutInflater inflater3 = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        View dialogEdit = inflater3.inflate(R.layout.passwd_dialog, null);
-                        EditText editText = (EditText) dialogEdit.findViewById(R.id.passwd_edit);
-                        AlertDialog.Builder editBunilder = new AlertDialog.Builder(getActivity());
-                        editBunilder.setIcon(R.mipmap.logo);
-                        editBunilder.setTitle("建议反馈");
-                        editBunilder.setView(dialogEdit);
-                        editBunilder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        LayoutInflater inflater3 = (LayoutInflater) getActivity ().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                        View dialogEdit = inflater3.inflate (R.layout.passwd_dialog, null);
+                        EditText editText = (EditText) dialogEdit.findViewById (R.id.passwd_edit);
+                        AlertDialog.Builder editBunilder = new AlertDialog.Builder (getActivity ());
+                        editBunilder.setIcon (R.mipmap.logo);
+                        editBunilder.setTitle ("建议反馈");
+                        editBunilder.setView (dialogEdit);
+                        editBunilder.setNegativeButton ("取消", new DialogInterface.OnClickListener () {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //关闭Dialog
                             }
                         });
-                        editBunilder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        editBunilder.setPositiveButton ("确认", new DialogInterface.OnClickListener () {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getActivity(), "我们会努力做得更好", Toast.LENGTH_SHORT).show();
+                                Toast.makeText (getActivity (), "我们会努力做得更好", Toast.LENGTH_SHORT).show ();
                             }
                         });
-                        editBunilder.create().show();
+                        editBunilder.create ().show ();
                         break;
                     case 3:
-                        SharedPreferences shared = getActivity().getSharedPreferences("userfile", Context.MODE_PRIVATE);
-                        shared.edit()
-                                .clear()
-                                .commit();
-                        Toast.makeText(getActivity(), "退出成功", Toast.LENGTH_SHORT).show();
-                        startActivityForResult(new Intent(getActivity(), LoginActivity.class), 3);
+                        SharedPreferences shared = getActivity ().getSharedPreferences ("userfile", Context.MODE_PRIVATE);
+                        shared.edit ()
+                                .clear ()
+                                .commit ();
+                        Toast.makeText (getActivity (), "退出成功", Toast.LENGTH_SHORT).show ();
+                        startActivityForResult (new Intent (getActivity (), LoginActivity.class), 3);
                         break;
                 }
             }
         });
-        builder.create().show();
+        builder.create ().show ();
     }
 
     //控件初始化
     private void init() {
-        if (getArguments() != null) {
-            ifloginto = getArguments().getString("iflogin");
-            usernameto = getArguments().getString("username");
-            user_image = getArguments().getString("user_image");
-            information = getArguments().getString("information");
-        }
-        if (ifloginto.equals("flase")) {
-            if (information.equals("true")) {
-                sharedInformation(usernameto);
-//                Log.d("sharedInformation--------", ifloginto);
-            } else {
 
-                //显示图片
-                new HttpImage(user_image, handler, personal_userImage);
-//                personal_userText.setText(usernameto);
-            }
+        String ifLogin = getContext ().getSharedPreferences ("userfile", Context.MODE_PRIVATE).getString ("iflogin", "false");
+
+        if (getArguments () != null) {
+            ifloginto = getArguments ().getString ("iflogin");
+            usernameto = getArguments ().getString ("username");
+            user_image = getArguments ().getString ("user_image");
+            information = getArguments ().getString ("information");
+        }
+        if (ifloginto.equals ("flase")) {
+            sharedInformation (usernameto);
+            new HttpImage (user_image, handler, personal_userImage);
         }
 //        Log.d("ifloginto--------", ifloginto);
-        Log.d("usernameto-------", usernameto);
+        Log.d ("usernameto-------", usernameto);
 
-        personal_userImage = (ImageView) root.findViewById(R.id.personal_userImage);
+        personal_userImage = (ImageView) root.findViewById (R.id.personal_userImage);
 
-        personal_userText = (TextView) root.findViewById(R.id.personal_userText);
+        personal_userText = (TextView) root.findViewById (R.id.personal_userText);
 
-        personal_userInformation = (TextView) root.findViewById(R.id.personal_userInformation);
-        personal_userActivity = (TextView) root.findViewById(R.id.personal_userActivity);
-        personal_userToActivity = (TextView) root.findViewById(R.id.personal_userToActivity);
-        personal_item_friends = (TextView) root.findViewById(R.id.personal_item_friends);
+        personal_userInformation = (TextView) root.findViewById (R.id.personal_userInformation);
+        personal_userActivity = (TextView) root.findViewById (R.id.personal_userActivity);
+        personal_userToActivity = (TextView) root.findViewById (R.id.personal_userToActivity);
+        personal_item_friends = (TextView) root.findViewById (R.id.personal_item_friends);
 
-        personal_item_RQcode = (TextView) root.findViewById(R.id.personal_item_RQcode);
-        personal_item_RQcodeSao = (TextView) root.findViewById(R.id.personal_item_RQcodeSao);
+        personal_item_RQcode = (TextView) root.findViewById (R.id.personal_item_RQcode);
+        personal_item_RQcodeSao = (TextView) root.findViewById (R.id.personal_item_RQcodeSao);
 
-        personal_item_sett = (TextView) root.findViewById(R.id.personal_item_sett);
+        personal_item_sett = (TextView) root.findViewById (R.id.personal_item_sett);
 
-        personal_item_photos = (TextView) root.findViewById(R.id.personal_item_photos);
-        personal_item_usercall = (TextView) root.findViewById(R.id.personal_item_usercall);
+        personal_item_photos = (TextView) root.findViewById (R.id.personal_item_photos);
+        personal_item_usercall = (TextView) root.findViewById (R.id.personal_item_usercall);
     }
 
     //通过用户名查找用户信息并显示到UI
     private void sharedInformation(final String username) {
-        new StringLoad(StringLoad.METHOD_GET) {
+        new StringLoad (StringLoad.METHOD_GET) {
 
             @Override
             public void executeUI(final String result) {
-                Data(result);
+                Data (result);
             }
 
 
-        }.execute(final_data.SHAREDINFORMATION + "?user_username=" + username);
+        }.execute (final_data.SHAREDINFORMATION + "?user_username=" + username);
     }
+
     private void Data(String res) {
-        Gson gson = new Gson();
-        Person rson =gson.fromJson(res,Person.class);
-        personal_userText.setText(rson.getUser_Nickname());
-        personal_userImage.setTag(rson.getUser_Images());
-        new ImageLoad(personal_userImage).execute(rson.getUser_Images());
+        Gson gson = new Gson ();
+        Person rson = gson.fromJson (res, Person.class);
+        personal_userText.setText (rson.getUser_Nickname ());
+        personal_userImage.setTag (rson.getUser_Images ());
+        new ImageLoad (personal_userImage).execute (rson.getUser_Images ());
 
     }
 //        new Thread() {
@@ -424,13 +408,13 @@ public class Fragment_personal extends Fragment {
 //    }
 
 
-        //解析服务器发送过来的Json数据
+    //解析服务器发送过来的Json数据
 //    private Map<String, String> parseJson(String json, String username) {
 //        try {
 //            //读取JSON对象
 //            JSONObject object = new JSONObject(json);
 //
-//            String user_Username = object.getString("user_Username");
+//            String user_Username = object.getifloginString("user_Username");
 //
 //            if (user_Username.equals(username)) {
 //                String user_Passwd = object.getString("user_Passwd");
@@ -480,29 +464,29 @@ public class Fragment_personal extends Fragment {
 
 
     private void showShare() {
-        ShareSDK.initSDK(getActivity());
-        OnekeyShare oks = new OnekeyShare();
+        ShareSDK.initSDK (getActivity ());
+        OnekeyShare oks = new OnekeyShare ();
         //关闭sso授权
-        oks.disableSSOWhenAuthorize();
+        oks.disableSSOWhenAuthorize ();
 // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle(getString(R.string.ssdk_oks_multi_share));
+        oks.setTitle (getString (R.string.ssdk_oks_multi_share));
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-        oks.setTitleUrl("http://sharesdk.cn");
+        oks.setTitleUrl ("http://sharesdk.cn");
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("我是分享文本，啦啦啦~");
+        oks.setText ("我是分享文本，啦啦啦~");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        oks.setImagePath ("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl("http://sharesdk.cn");
+        oks.setUrl ("http://sharesdk.cn");
         // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment("我是测试评论文本");
+        oks.setComment ("我是测试评论文本");
         // site是分享此内容的网站名称，仅在QQ空间使用
-        oks.setSite(getString(R.string.app_name));
+        oks.setSite (getString (R.string.app_name));
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl("http://sharesdk.cn");
+        oks.setSiteUrl ("http://sharesdk.cn");
 // 启动分享GUI
-        oks.show(getActivity());
+        oks.show (getActivity ());
     }
 }

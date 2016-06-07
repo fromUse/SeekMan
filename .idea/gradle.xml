@@ -10,28 +10,24 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Personal" />
-            <option value="$PROJECT_DIR$/SMSSDK" />
             <option value="$PROJECT_DIR$/Square" />
             <option value="$PROJECT_DIR$/Theme" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/libzxing" />
             <option value="$PROJECT_DIR$/onekeyshare" />
-            <option value="$PROJECT_DIR$/sharesdk" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Personal" />
-            <option value="$PROJECT_DIR$/SMSSDK" />
             <option value="$PROJECT_DIR$/Square" />
             <option value="$PROJECT_DIR$/Theme" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/libzxing" />
             <option value="$PROJECT_DIR$/onekeyshare" />
-            <option value="$PROJECT_DIR$/sharesdk" />
           </set>
         </option>
       </GradleProjectSettings>

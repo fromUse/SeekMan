@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Personal/Personal.iml" filepath="$PROJECT_DIR$/Personal/Personal.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SMSSDK/SMSSDK.iml" filepath="$PROJECT_DIR$/SMSSDK/SMSSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/SeekMan2.iml" filepath="$PROJECT_DIR$/SeekMan2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Square/Square.iml" filepath="$PROJECT_DIR$/Square/Square.iml" />
       <module fileurl="file://$PROJECT_DIR$/Theme/Theme.iml" filepath="$PROJECT_DIR$/Theme/Theme.iml" />
@@ -11,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/libzxing/libzxing.iml" filepath="$PROJECT_DIR$/libzxing/libzxing.iml" />
       <module fileurl="file://$PROJECT_DIR$/onekeyshare/onekeyshare.iml" filepath="$PROJECT_DIR$/onekeyshare/onekeyshare.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sharesdk/sharesdk.iml" filepath="$PROJECT_DIR$/sharesdk/sharesdk.iml" />
     </modules>
   </component>
 </project>

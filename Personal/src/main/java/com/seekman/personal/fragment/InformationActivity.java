@@ -6,17 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Network;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -30,18 +26,6 @@ import com.seekman.library.utils.ImageLoad;
 import com.seekman.library.utils.StringLoad;
 import com.seekman.personal.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TimerTask;
 
@@ -52,14 +36,25 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
 
     private TextView information_finish, information_username;
     private ImageView information_retrurn, information_image;
-    private EditText information_nickname, information_name,
-            information_age, information_sex, information_city,
-            information_passwd, passwd_edit;
+    private EditText
+            information_nickname,
+            information_name,
+            information_age,
+            information_sex,
+            information_city,
+            information_passwd,
+            passwd_edit;
     private String username, passwd, nickname;
 
     //修改用户信息字段名
-    private String user_username, user_passwd, user_nickname,
-            user_name, user_sex, user_age, city_name;
+    private String
+            user_username,
+            user_passwd,
+            user_nickname,
+            user_name,
+            user_sex,
+            user_age,
+            city_name;
     //修改信息服务器返回的值
     private String ifmt;
     private boolean topasswd = false;
@@ -72,131 +67,149 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题
-        setContentView(R.layout.user_information);
-        init();
+        super.onCreate (savedInstanceState);
+        requestWindowFeature (Window.FEATURE_NO_TITLE);//去掉标题
+        setContentView (R.layout.user_information);
+        init ();
 
 
     }
 
     private void init() {
-        information_retrurn = (ImageView) findViewById(R.id.information_return);
-        information_finish = (TextView) findViewById(R.id.information_finish);
-        information_username = (TextView) findViewById(R.id.information_username);
-        information_image = (ImageView) findViewById(R.id.information_image);
-        information_nickname = (EditText) findViewById(R.id.information_nickname);
-        information_name = (EditText) findViewById(R.id.information_name);
-        information_age = (EditText) findViewById(R.id.information_age);
-        information_sex = (EditText) findViewById(R.id.information_sex);
-        information_city = (EditText) findViewById(R.id.information_city);
-        information_passwd = (EditText) findViewById(R.id.information_passwd);
+        information_retrurn = (ImageView) findViewById (R.id.information_return);
+        information_finish = (TextView) findViewById (R.id.information_finish);
+        information_username = (TextView) findViewById (R.id.information_username);
+        information_image = (ImageView) findViewById (R.id.information_image);
+        information_nickname = (EditText) findViewById (R.id.information_nickname);
+        information_name = (EditText) findViewById (R.id.information_name);
+        information_age = (EditText) findViewById (R.id.information_age);
+        information_sex = (EditText) findViewById (R.id.information_sex);
+        information_city = (EditText) findViewById (R.id.information_city);
+        information_passwd = (EditText) findViewById (R.id.information_passwd);
 
         //从本地取出
-        SharedPreferences sharedPreferences = getSharedPreferences("userfile", Activity.MODE_PRIVATE);
-        username = sharedPreferences.getString("username", "");
-        information_username.setText(username);
-        passwd = sharedPreferences.getString("passwd", "");
-        String information = sharedPreferences.getString("information", "false");
-        if (information.equals("false")) {
-            //从服务器获取到当前用户的信息
-            HandlerThread handlerThread = new HandlerThread("Network");
-            handlerThread.start();
-            Handler handler = new Handler(handlerThread.getLooper());
-            handler.postDelayed(new TimerTask() {
-                @Override
-                public void run() {
-                    HttpSetinformation(username);
-                }
-            }, 1000);
+        SharedPreferences sharedPreferences = getSharedPreferences ("userfile", Activity.MODE_PRIVATE);
+        if (sharedPreferences != null) {
+            String information = sharedPreferences.getString ("information", "false");
+            username = sharedPreferences.getString ("username", "");
+            if (information.equals ("false")) {
+                //从服务器获取到当前用户的信息
+                HandlerThread handlerThread = new HandlerThread ("Network");
+                handlerThread.start ();
+                Handler handler = new Handler (handlerThread.getLooper ());
+                handler.postDelayed (new TimerTask () {
+                    @Override
+                    public void run() {
+                        HttpSetinformation (username);
+                    }
+                }, 1000);
+            } else {
+
+
+                passwd = sharedPreferences.getString ("passwd", "");
+                user_nickname = sharedPreferences.getString ("user_nickname", "");
+                user_sex = sharedPreferences.getString ("user_sex", "");
+                user_age = sharedPreferences.getString ("user_age", "");
+                city_name = sharedPreferences.getString ("city_name", "");
+
+                information_username.setText (username);
+
+                information_nickname.setText (user_nickname);
+                information_name.setText (user_name);
+                information_age.setText (user_age);
+                information_sex.setText (user_sex);
+                information_city.setText (city_name);
+
+            }
+
+
         }
 
 
-        information_retrurn.setOnClickListener(this);
-        information_finish.setOnClickListener(this);
-        information_image.setOnClickListener(this);
-        information_nickname.setOnClickListener(this);
-        information_name.setOnClickListener(this);
-        information_age.setOnClickListener(this);
-        information_sex.setOnClickListener(this);
-        information_city.setOnClickListener(this);
-        information_passwd.setOnClickListener(this);
+        information_retrurn.setOnClickListener (this);
+        information_finish.setOnClickListener (this);
+        information_image.setOnClickListener (this);
+        information_nickname.setOnClickListener (this);
+        information_name.setOnClickListener (this);
+        information_age.setOnClickListener (this);
+        information_sex.setOnClickListener (this);
+        information_city.setOnClickListener (this);
+        information_passwd.setOnClickListener (this);
 
     }
 
     //从服务器获取到当前用户的信息
     private void HttpSetinformation(final String username) {
 
-        new StringLoad(StringLoad.METHOD_GET) {
+        new StringLoad (StringLoad.METHOD_GET) {
 
             @Override
             public void executeUI(final String result) {
-                Data(result);
-
+                Data (result);
             }
 
 
-        }.execute(final_data.SHAREDINFORMATION + "?user_username=" + username);
+        }.execute (final_data.SHAREDINFORMATION + "?user_username=" + username);
     }
 
     private void Data(String res) {
-        Gson gson = new Gson();
-        Person rson = gson.fromJson(res, Person.class);
+        Gson gson = new Gson ();
+        Person rson = gson.fromJson (res, Person.class);
 
 
-        information_image.setTag(rson.getUser_Images());
-        Log.d("========================", rson.getUser_Images());
-        new ImageLoad(information_image).execute(rson.getUser_Images());
+        information_image.setTag (rson.getUrl ());
+
+        new ImageLoad (information_image).execute (rson.getUrl ());
 
 
-        if (rson.getUser_Name() == null || rson.getUser_Name().equals("null")) {
-            information_nickname.setText("");
+        if (rson.getUser_Name () == null || rson.getUser_Name ().equals ("null")) {
+            information_nickname.setText ("");
         } else {
-            information_nickname.setText(rson.getUser_Name());
+            information_nickname.setText (rson.getUser_Name ());
         }
 
-        if (rson.getUser_Name() == null || rson.getUser_Name().equals("null")) {
-            information_name.setText("");
+        if (rson.getUser_Name () == null || rson.getUser_Name ().equals ("null")) {
+            information_name.setText ("");
         } else {
-            information_name.setText(rson.getUser_Name());
+            information_name.setText (rson.getUser_Name ());
         }
-        if (rson.getUser_Age() == "0" || rson.equals("0")) {
-            information_age.setText("");
+        if (rson.getUser_Age () == "0" || rson.equals ("0")) {
+            information_age.setText ("");
         } else {
-            information_age.setText(rson.getUser_Age());
+            information_age.setText (rson.getUser_Age ());
         }
-        if (rson.getUser_Sex() == null || rson.getUser_Sex().equals("null")) {
-            information_sex.setText("");
+        if (rson.getUser_Sex () == null || rson.getUser_Sex ().equals ("null")) {
+            information_sex.setText ("");
         } else {
-            information_sex.setText(rson.getUser_Sex());
+            information_sex.setText (rson.getUser_Sex ());
         }
-        if (rson.getCity_Name() == null || rson.getCity_Name().equals("null")) {
-            information_city.setText("");
+        if (rson.getCity_Name () == null || rson.getCity_Name ().equals ("null")) {
+            information_city.setText ("");
         } else {
-            information_city.setText(rson.getCity_Name());
+            information_city.setText (rson.getCity_Name ());
         }
 
-        String imagePath = information_image.getTag().toString();
-        Log.d("-----------------------------", imagePath);
-        String userName = information_username.getText().toString();
-        String userNickname = information_nickname.getText().toString();
-        String Name = information_name.getText().toString();
-        String Sex = information_sex.getText().toString();
-        String Age = information_age.getText().toString();
-        String City_name = information_city.getText().toString();
+        //String imagePath = information_image.getTag ().toString ();
+
+        String userName = rson.getUser_Name ();
+        String userNickname = rson.getUser_Nickname ();
+        String Name = rson.getUser_Name ();
+        String Sex = rson.getUser_Sex ();
+        String Age = rson.getUser_Age ();
+        String City_name = rson.getCity_Name ();
 //保存到本地
-        SharedPreferences sharedPreferences = getSharedPreferences("userfile", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", userName)
-                .putString("user_nickname", userNickname)
-                .putString("user_name", Name)
-                .putString("user_sex", Sex)
-                .putString("user_age", Age)
-                .putString("city_name", City_name)
-                .putString("passwd", passwd)
-                .putString("iflogin", "true")
-                .putString("information", "true");
-        editor.commit();
+        SharedPreferences sharedPreferences = getSharedPreferences ("userfile", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit ();
+        editor.putString ("username", userName)
+                .putString ("user_nickname", userNickname)
+                .putString ("user_name", Name)
+                .putString ("user_sex", Sex)
+                .putString ("user_age", Age)
+                .putString ("city_name", City_name)
+                .putString ("passwd", passwd)
+                .putString ("iflogin", "true")
+                .putString ("information", "true");
+        editor.commit ();
 
     }
 
@@ -323,85 +336,85 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
 
     //完成信息修改发送到服务器
     private void informationText() {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setTitle("请稍等");
-        progressDialog.setMessage("玩命修改中...");
-        progressDialog.setIcon(R.mipmap.logo);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setCancelable(true);
-        progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog (this);
+        progressDialog.setProgressStyle (ProgressDialog.STYLE_SPINNER);
+        progressDialog.setTitle ("请稍等");
+        progressDialog.setMessage ("玩命修改中...");
+        progressDialog.setIcon (R.mipmap.logo);
+        progressDialog.setIndeterminate (true);
+        progressDialog.setCancelable (true);
+        progressDialog.show ();
 
 
         //从界面获取修改的信息内容
-        user_username = information_username.getText().toString();
-        user_passwd = information_passwd.getText().toString();
-        user_nickname = information_nickname.getText().toString();
-        user_name = information_name.getText().toString();
-        user_sex = information_sex.getText().toString();
-        user_age = information_age.getText().toString();
-        city_name = information_city.getText().toString();
+        user_username = information_username.getText ().toString ();
+        user_passwd = information_passwd.getText ().toString ();
+        user_nickname = information_nickname.getText ().toString ();
+        user_name = information_name.getText ().toString ();
+        user_sex = information_sex.getText ().toString ();
+        user_age = information_age.getText ().toString ();
+        city_name = information_city.getText ().toString ();
         if (!ifpasswd) {
             user_passwd = "";
         }
-        if (user_username == null || user_username.equals("")) {
+        if (user_username == null || user_username.equals ("")) {
             user_username = "0";
         }
-        if (user_passwd == null || user_passwd.equals("")) {
+        if (user_passwd == null || user_passwd.equals ("")) {
             user_passwd = "0";
         }
-        if (user_nickname == null || user_nickname.equals("")) {
+        if (user_nickname == null || user_nickname.equals ("")) {
             user_nickname = "0";
         }
-        if (user_name == null || user_name.equals("")) {
+        if (user_name == null || user_name.equals ("")) {
             user_name = "0";
         }
-        if (user_sex == null || user_sex.equals("")) {
+        if (user_sex == null || user_sex.equals ("")) {
             user_sex = "0";
         }
-        if (user_age == null || user_age.equals("")) {
+        if (user_age == null || user_age.equals ("")) {
             user_age = "0";
         }
-        if (city_name == null || city_name.equals("")) {
+        if (city_name == null || city_name.equals ("")) {
             city_name = "0";
         }
 
-        new StringLoad(StringLoad.METHOD_GET){
+        new StringLoad (StringLoad.METHOD_GET) {
 
             @Override
             public void executeUI(final String result) {
-                if (result.equals("true")) {
+                if (result.equals ("true")) {
 
                     //将信息存到本地
-                    SharedPreferences shared = getSharedPreferences("userfile", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = shared.edit();
-                    editor.putString("user_username", user_username)
-                            .putString("user_passwd", user_passwd)
-                            .putString("user_nickname", user_nickname)
-                            .putString("user_name", user_name)
-                            .putString("user_sex", user_sex)
-                            .putString("user_age", user_age)
-                            .putString("city_name", city_name)
-                            .putString("iflogin", "true")
-                            .putString("information", "true");
+                    SharedPreferences shared = getSharedPreferences ("userfile", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = shared.edit ();
+                    editor.putString ("user_username", user_username)
+                            .putString ("user_passwd", user_passwd)
+                            .putString ("user_nickname", user_nickname)
+                            .putString ("user_name", user_name)
+                            .putString ("user_sex", user_sex)
+                            .putString ("user_age", user_age)
+                            .putString ("city_name", city_name)
+                            .putString ("iflogin", "true")
+                            .putString ("information", "true");
 
-                    Toast.makeText(InformationActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText (InformationActivity.this, "保存成功", Toast.LENGTH_SHORT).show ();
 
-                    progressDialog.cancel();
+                    progressDialog.cancel ();
 
-                    Intent intent = new Intent();
-                    setResult(CONTEXT_INCLUDE_CODE, intent.putExtra("username", user_username)
-                            .putExtra("iflogin", "true"));
-                    finish();
+                    Intent intent = new Intent ();
+                    setResult (CONTEXT_INCLUDE_CODE, intent.putExtra ("username", user_username)
+                            .putExtra ("iflogin", "true"));
+                    finish ();
 
-                }else if (result.equals("false")) {
-                    progressDialog.cancel();
-                    Toast.makeText(InformationActivity.this, "嗷呜！居然失败了！", Toast.LENGTH_SHORT).show();
+                } else if (result.equals ("false")) {
+                    progressDialog.cancel ();
+                    Toast.makeText (InformationActivity.this, "嗷呜！居然失败了！", Toast.LENGTH_SHORT).show ();
                 }
             }
 
 
-        }.execute(final_data.INFORMATION+"?user_username=" + user_username +
+        }.execute (final_data.INFORMATION + "?user_username=" + user_username +
                 "&user_passwd=" + user_passwd +
                 "&user_nickname=" + user_nickname +
                 "&user_name=" + user_name +
@@ -500,65 +513,65 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        Drawable bkDrawable = this.getResources().getDrawable(R.drawable.layout_btoom_border);
-        int i = v.getId();
+        Drawable bkDrawable = this.getResources ().getDrawable (R.drawable.layout_btoom_border);
+        int i = v.getId ();
         if (i == R.id.information_return) {
-            Intent intent = new Intent();
-            setResult(CONTEXT_INCLUDE_CODE, intent.putExtra("username", user_username));
-            finish();
+            Intent intent = new Intent ();
+            setResult (CONTEXT_INCLUDE_CODE, intent.putExtra ("username", user_username));
+            finish ();
         } else if (i == R.id.information_finish) {
-            informationText();
+            informationText ();
         } else if (i == R.id.information_image) {
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("image/*");
-            startActivity(intent);
+            Intent intent = new Intent (Intent.ACTION_GET_CONTENT);
+            intent.addCategory (Intent.CATEGORY_OPENABLE);
+            intent.setType ("image/*");
+            startActivity (intent);
         } else if (i == R.id.information_nickname) {
-            information_nickname.setBackground(bkDrawable);
+            information_nickname.setBackground (bkDrawable);
         } else if (i == R.id.information_name) {
-            information_name.setBackground(bkDrawable);
+            information_name.setBackground (bkDrawable);
         } else if (i == R.id.information_age) {
-            information_age.setBackground(bkDrawable);
+            information_age.setBackground (bkDrawable);
         } else if (i == R.id.information_sex) {
-            information_sex.setBackground(bkDrawable);
+            information_sex.setBackground (bkDrawable);
         } else if (i == R.id.information_city) {
-            information_city.setBackground(bkDrawable);
+            information_city.setBackground (bkDrawable);
         } else if (i == R.id.information_passwd) {
             if (!topasswd) {
-                senpasswd();
+                senpasswd ();
             }
         }
     }
 
     private void senpasswd() {
-            LayoutInflater inflater = (LayoutInflater)
-                    (InformationActivity.this.getSystemService(LAYOUT_INFLATER_SERVICE));
-            View dialogPasswd = inflater.inflate(R.layout.passwd_dialog, null);
-            passwd_edit = (EditText) dialogPasswd.findViewById(R.id.passwd_edit);
-            final AlertDialog.Builder builder = new AlertDialog.Builder(InformationActivity.this)
-                    .setIcon(R.mipmap.logo)
-                    .setTitle("输入原密码")
-                    .setView(dialogPasswd);
-            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+        LayoutInflater inflater = (LayoutInflater)
+                (InformationActivity.this.getSystemService (LAYOUT_INFLATER_SERVICE));
+        View dialogPasswd = inflater.inflate (R.layout.passwd_dialog, null);
+        passwd_edit = (EditText) dialogPasswd.findViewById (R.id.passwd_edit);
+        final AlertDialog.Builder builder = new AlertDialog.Builder (InformationActivity.this)
+                .setIcon (R.mipmap.logo)
+                .setTitle ("输入原密码")
+                .setView (dialogPasswd);
+        builder.setNegativeButton ("取消", new DialogInterface.OnClickListener () {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+        builder.setPositiveButton ("确认", new DialogInterface.OnClickListener () {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (passwd_edit.getText ().toString ().equals (passwd)) {
+                    ifpasswd = true;
+                    topasswd = true;
+                    information_passwd.setBackgroundResource (R.drawable.layout_btoom_border);
+                    Toast.makeText (InformationActivity.this, "密码正确", Toast.LENGTH_SHORT).show ();
+                } else {
+                    senpasswd ();
+                    Toast.makeText (InformationActivity.this, "密码错误，请重新输入", Toast.LENGTH_SHORT).show ();
                 }
-            });
-            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (passwd_edit.getText().toString().equals(passwd)) {
-                        ifpasswd = true;
-                        topasswd = true;
-                        information_passwd.setBackgroundResource(R.drawable.layout_btoom_border);
-                        Toast.makeText(InformationActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
-                    } else {
-                        senpasswd();
-                        Toast.makeText(InformationActivity.this, "密码错误，请重新输入", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            builder.create().show();
-        }
+            }
+        });
+        builder.create ().show ();
+    }
 }
